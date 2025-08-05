@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Movie;
-use App\Http\Requests\StoreMovieRequest;
-use App\Http\Requests\UpdateMovieRequest;
+use App\Models\Favorite;
+use App\Http\Requests\StoreFavoriteRequest;
+use App\Http\Requests\UpdateFavoriteRequest;
 
-class MovieController extends Controller
+class FavoriteController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        
+        //
     }
 
     /**
@@ -27,7 +27,7 @@ class MovieController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreMovieRequest $request)
+    public function store(StoreFavoriteRequest $request)
     {
         //
     }
@@ -35,7 +35,7 @@ class MovieController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Movie $movie)
+    public function show(Favorite $favorite)
     {
         //
     }
@@ -43,7 +43,7 @@ class MovieController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Movie $movie)
+    public function edit(Favorite $favorite)
     {
         //
     }
@@ -51,7 +51,7 @@ class MovieController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateMovieRequest $request, Movie $movie)
+    public function update(UpdateFavoriteRequest $request, Favorite $favorite)
     {
         //
     }
@@ -59,7 +59,7 @@ class MovieController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Movie $movie)
+    public function destroy(Favorite $favorite)
     {
         //
     }
