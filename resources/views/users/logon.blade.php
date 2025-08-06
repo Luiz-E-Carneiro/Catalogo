@@ -19,14 +19,20 @@
         <form action="" method="post">
             @csrf
             <div id="form_title">
-                <h1>Welcome again !</h1>
-                <h2>Sign in to get started</h2>
+                <h1>Welcome !</h1>
+                <h2>Sign on for your first try</h2>
+            </div>
+            <div class="input_module">
+                <label for="name">
+                    <i class="fa-solid fa-user"></i>
+                </label>
+                <input type="text" id="name" name="name" value="{{old(" name")}}" placeholder="Your user name">
             </div>
             <div class="input_module">
                 <label for="email">
-                    <i class="fa-solid fa-user"></i>
+                    <i class="fa-solid fa-envelope"></i>
                 </label>
-                <input type="email" id="email" name="email" placeholder="Your email">
+                <input type="email" id="email" name="email" value="{{old(" email")}}" placeholder="Your email">
             </div>
             <div class="input_module">
                 <label for="password">
@@ -37,18 +43,25 @@
                     <i class="fa-solid fa-eye-slash"></i>
                 </label>
             </div>
+            <div class="input_module">
+                <label for="password_confirmation">
+                    <i class="fa-solid fa-key"></i>
+                </label>
+                <input type="password" id="password_confirmation" name="password_confirmation"
+                    placeholder="Confirm the password">
+                <label for="password_confirmation" class="password_button">
+                    <i class="fa-solid fa-eye-slash"></i>
+                </label>
+            </div>
             <div id="login_options">
                 <div class="option">
                     <div class="checkbox">
-                        <input type="hidden" name="remember">
+                        <input type="hidden" name="remember" value="{{old(" remember")}}">
                         <div class="box">
                             <div class="box_item"></div>
                         </div>
                         <p>Remember me</p>
                     </div>
-                </div>
-                <div class="option">
-                    <a href="">Forgot my password</a>
                 </div>
             </div>
             <button type="submit" class="form_button">Enter</button>
@@ -57,7 +70,7 @@
                 <div class="section_center">Or</div>
                 <div class="section_side"></div>
             </div>
-            <a href="{{route("logon")}}" class="form_button">Create a account</a>
+            <a href="{{route("login")}}" class="form_button">Sign in</a>
         </form>
         <footer>
             <p>© 2021-2025 blog.com, Inc. ou suas afiliadas</p>

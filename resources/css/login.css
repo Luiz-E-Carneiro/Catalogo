@@ -1,0 +1,230 @@
+@import url('common.css');
+body {
+}
+#icon {
+    position: absolute;
+    top: 20px;
+    left: 35px;
+    width: 200px;
+}
+#background {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 10px 0px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url(../../public/system/wave_background1.svg);
+    background-attachment: fixed;
+}
+footer {
+    font-size: 0.9em;
+    font-weight: bold;
+}
+form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+    padding: 30px 25px;
+    gap: 15px 0px;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+#form_title {
+    align-self: flex-start;
+}
+form h1 {
+    align-self: flex-start;
+    font-size: 1.9em;
+    color: #003554;
+}
+form h2 {
+    align-self: flex-start;
+    font-size: 1em;
+    font-weight: 600;
+    color: #051923;
+    padding-bottom: 20px;
+}
+.input_module {
+    width: 100%;
+    height: 35px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 20px;
+    background-color: #cacaca;
+    transition: all 0.25s ease;
+}
+.input_module:first-child {
+    padding: 0px 5px;
+}
+.input_module input, .input_module select {
+    width: 80%;
+    height: 100%;
+    font-size: 0.8em;
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+#password, #password_confirmation {
+    width: 77.5%;
+}
+.input_module label {
+    width: 10%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.9em;
+    color: #3b3b3b;
+}
+.password_button {
+    width: auto;
+    flex-grow: 1;
+    color: #051923;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+.password_button:hover {
+    background-color: #a5a5a5;
+}
+#login_options {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-flow: column;
+    gap: 15px 0px;
+    font-size: 0.9em;
+    font-weight: 600;
+}
+.option {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.checkbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0px 5px;
+    cursor: pointer;
+    transition: all 0.25 ease;
+}
+.box {
+    width: 55px;
+    height: 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0px 1.5px;
+    border-radius: 20px;
+    background-color: #cacaca;
+    transition: all 0.25 ease;
+}
+.box_item {
+    width: 17px;
+    height: 17px;
+    border-radius: 100%;
+    background-color: white;
+    transition: all 0.25 ease;
+}
+.checked .box {
+    transition: all 0.25 ease;
+    background-color: #cacaca;
+}
+@keyframes check {
+    0% {
+        background-color: white;
+        margin-left: 0;
+    }
+    100% {
+        background-color: #b6fff3;
+        margin-left: calc(100% - 17px - 1.5px);
+    }
+}
+@keyframes uncheck {
+    0% {
+        background-color: #b6fff3;
+        margin-left: calc(100% - 17px - 1.5px);
+    }
+    100% {
+        background-color: white;
+        margin-left: 0;
+    }
+}
+.option a {
+    color: #051923;
+    transition: all 0.25s ease;
+}
+.option a:hover {
+    color: #5BC0BE;
+    text-decoration: underline;
+}
+form button {
+    margin-top: 10px;
+}
+.form_button {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.9em;
+    font-weight: 600;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    background-color: #5BC0BE;
+}
+.form_button:hover {
+    background-color: #287776;
+}
+.section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0px 10px;
+}
+.section div:nth-child(2) {
+    color: #287776;
+    font-size: 0.8em;
+    font-weight: bold;
+}
+.section_side {
+    width: 30%;
+    height: 2px;
+    background-color: #287776;
+}
+.focused {
+    border: 1.5px solid #5BC0BE;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.input_group {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0px 5px;
+}
+.input_group .input_module {
+    width: auto;
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('synopsis');
             $table->integer('year');
-            $table->foreignId('category_id')->constrained()->onDelete("cascade");
             $table->string('image');
             $table->mediumText('link');
+            $table->foreignId('category_id')->constrained()->onDelete("cascade");
             $table->timestamps();
         });
     }
