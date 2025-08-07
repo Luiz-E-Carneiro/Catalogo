@@ -10,7 +10,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="icon" href="{{asset("system/icon.svg")}}">
     <title>Capybara Cinema</title>
-    @vite('resources/css/login.css')
+    <link rel="stylesheet" href="{{asset("system/css/login.css")}}">
 </head>
 
 <body>
@@ -63,7 +63,7 @@
             <p>© 2021-2025 blog.com, Inc. ou suas afiliadas</p>
         </footer>
     </div>
-    @vite(["resources/js/form.js"])
+    <script src="{{ asset('system/js/form.js') }}"></script>
 </body>
 
 </html>
