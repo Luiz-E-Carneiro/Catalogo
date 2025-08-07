@@ -22,7 +22,11 @@ class StoreMovieRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'synopsis' => 'required',
+            'year' => 'required|numeric',
+            'image' => 'required', //|mimes:jpeg,png,jpg --> Link image or file??
+            'link' => 'required',
+            'category_id' => 'required'
         ];
     }
 }

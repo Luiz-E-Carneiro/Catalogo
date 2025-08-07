@@ -13,7 +13,8 @@ class MovieController extends Controller
      */
     public function index()
     {
-        
+        $movies = Movie::all();
+        return view('movie.index', compact('movies'));   
     }
 
     /**
@@ -21,7 +22,7 @@ class MovieController extends Controller
      */
     public function create()
     {
-        //
+        return view('movie.create');
     }
 
     /**
@@ -29,7 +30,13 @@ class MovieController extends Controller
      */
     public function store(StoreMovieRequest $request)
     {
-        //
+        $data = $request->validated();
+
+        // Missing image treatment
+
+        Movie::create($data);
+
+        return redirect()->route('movie.index')->with('success', 'Filme criado com sucesso!');
     }
 
     /**
@@ -61,6 +68,10 @@ class MovieController extends Controller
      */
     public function destroy(Movie $movie)
     {
-        //
+        $movie = Movie::findOrFail($movie->id);
+
+        $movie->delete();
+
+        return redirect('movie.index')->with('success', 'Filme deletado com sucesso!');
     }
 }
