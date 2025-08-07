@@ -32,7 +32,12 @@ class MovieController extends Controller
     {
         $data = $request->validated();
 
-        // Missing image treatment
+        if($request->hasFile('image')){
+            $image = $request->file('image');
+            $imagePath = $image->store('movies', 'public');
+    
+            $data['image'] = $imagePath;
+        }
 
         Movie::create($data);
 
@@ -44,7 +49,9 @@ class MovieController extends Controller
      */
     public function show(Movie $movie)
     {
-        //
+        $movie = Movie::find($movie->id);
+
+        return view('movie.show', compact('movie'));
     }
 
     /**
@@ -52,7 +59,7 @@ class MovieController extends Controller
      */
     public function edit(Movie $movie)
     {
-        //
+        return view('movie.edit');
     }
 
     /**
@@ -60,7 +67,20 @@ class MovieController extends Controller
      */
     public function update(UpdateMovieRequest $request, Movie $movie)
     {
-        //
+        $data = $request->validated();
+
+        if($request->hasFile('image')){
+            $image = $request->file('image');
+            $imagePath = $image->store('movies', 'public');
+    
+            $data['image'] = $imagePath;
+        }
+
+        $movie = Movie::find($movie->id);
+
+        $movie->update($data);
+        
+        return redirect()->route('movie.index')->with('success', 'Filme alterado com sucesso!');
     }
 
     /**

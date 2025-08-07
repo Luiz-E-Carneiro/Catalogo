@@ -24,7 +24,7 @@ class StoreMovieRequest extends FormRequest
         return [
             'synopsis' => 'required',
             'year' => 'required|numeric',
-            'image' => 'required', //|mimes:jpeg,png,jpg --> Link image or file??
+            'image' => 'required|mimes:jpeg,png,jpg',
             'link' => 'required',
             'category_id' => 'required'
         ];
