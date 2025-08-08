@@ -10,12 +10,12 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="icon" href="{{asset("system/icon.svg")}}">
     <title>Capybara Cinema</title>
-    <link rel="stylesheet" href="{{asset("system/css/login.css")}}">
+    @vite(['resources/css/login.css'])
 </head>
 
 <body>
     <div id="background">
-        <img src="{{asset("system/white_text.svg")}}" alt="" id="icon">
+        <img src="{{asset("system/text_icon.svg")}}" alt="" id="icon">
         <form action="" method="post">
             @csrf
             <div id="form_title">
@@ -76,7 +76,7 @@
             <p>© 2021-2025 blog.com, Inc. ou suas afiliadas</p>
         </footer>
     </div>
-    <script src="{{ asset('system/js/form.js') }}"></script>
+    @vite(['resources/js/form.js'])
 </body>
 
 </html>

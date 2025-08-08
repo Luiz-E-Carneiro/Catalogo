@@ -1,0 +1,96 @@
+@import url('common.css');
+body {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-flow: column;
+    background-color: #111111;
+}
+header {
+    position: fixed;
+    z-index: 1;
+    width: 100vw;
+    height: 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 100%;
+    background-color: rgba(17, 17, 17, 0.8);
+    backdrop-filter: blur(8px);
+}
+header>div, header nav, header nav a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+header>div:first-child {
+    justify-content: space-between;
+    padding-left: 40px;
+}
+header nav {
+    height: 100%;
+    justify-content: flex-start;
+    gap: 0px 10px;
+}
+header nav a {
+    padding: 7.5px 20px;
+    color: #dadada;
+    gap: 0px 10px;
+    transition: all 0.25s ease;
+    opacity: 0.8;
+    border-radius: 5px;
+    font-size: 0.95em;
+}
+header nav i {
+    font-size: 1.2em;
+}
+header nav a:hover {
+    opacity: 1;
+}
+#logo {
+    height: 97.5%;
+}
+#logo img {
+    height: 100%;
+}
+header>div:last-child {
+    justify-content: flex-end;
+    padding: 0px 50px;
+    gap: 0px 10px;
+}
+#profile_button {
+    width: 47px;
+    height: 47px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 100%;
+    border: 2px solid #111111;
+}
+#profile_button:hover {
+    border-color: #464646;
+}
+header>div:last-child>button, #search_button {
+    margin-right: 20px;
+    padding: 7.5px;
+    font-size: 1em;
+    border-radius: 5px;
+    border: none;
+    color: #dadada;
+    background-color: transparent;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+#search_button {
+    margin: 0;
+}
+header>div:last-child>button:hover, #search_button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+.closed input {
+    width: 0;
+    display: none;
+    overflow: hidden;
+}
+.closed #submit_search {
+    display: none;
+}

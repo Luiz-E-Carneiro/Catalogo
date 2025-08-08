@@ -1,10 +1,11 @@
 <?php
 
+use App\Http\Controllers\GeneralController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', fn () => redirect()->route('movie.index'));
+Route::get("/", [GeneralController::class, "index"])->name("index");
 
 Route::resource('/movie', MovieController::class);
 
