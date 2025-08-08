@@ -1,6 +1,4 @@
 @import url('common.css');
-body {
-}
 #icon {
     position: absolute;
     top: 20px;
@@ -17,7 +15,7 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    background-image: url(../wave_background1.svg);
+    background-image: url(../../public/system/wave_background1.svg);
     background-attachment: fixed;
 }
 footer {
