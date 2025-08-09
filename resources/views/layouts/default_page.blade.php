@@ -12,11 +12,11 @@
 </head>
 <body>
     <header>
-        <a id="logo" href="">
+        <a id="logo" href="{{route("index")}}">
             <img src="{{asset("system/white_icon.svg")}}" alt="">
         </a>
         <nav>
-            <a href="">
+            <a href="{{route("index")}}">
                 <i class="fa-solid fa-house"></i>
                 <p>Home</p>
             </a>

@@ -1,0 +1,160 @@
+main {
+    margin-top: 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-flow: column;
+    gap: 20px 0px;
+}
+header {
+    transition: all 0.25s ease;
+    backdrop-filter: none;
+    background: linear-gradient(180deg,rgba(17, 17, 17, 1) 10%, rgba(87, 199, 133, 0) 100%);
+}
+.scroll_header {
+    background-color: rgba(17, 17, 17, 0.8);
+    backdrop-filter: blur(8px);
+}
+#movie {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    flex-flow: column;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(https://static1.cbrimages.com/wordpress/wp-content/uploads/2019/04/Avengers-Endgame-banner-poster.jpg);
+    color: #f0f0f0;
+}
+#movie_description {
+    padding: 0px 40px;
+    padding-bottom: 60px;
+    width: 100%;
+    height: 60%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    flex-flow: column;
+    gap: 10px 0px;
+    background: linear-gradient(0deg,rgba(17, 17, 17, 1) 10%, rgba(87, 199, 133, 0) 100%);
+}
+#movie_title {
+    font-size: 2em;
+    font-weight: bold;
+}
+#movie_data {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0px 20px;
+}
+#movie_rate {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0px 10px;
+}
+#movie_rate p {
+    font-size: 0.95em;
+    font-weight: 500;
+}
+#movie_rate div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.85em;
+}
+.colored {
+    color: 	#FFEB3B;
+}
+#movie_category {
+    padding: 7.5px 20px;
+    color: #dadada;
+    font-size: 0.9em;
+    font-weight: 500;
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(5px);
+}
+#movie_date {
+    font-size: 0.9em;
+}
+#synopsis {
+    width: 40%;
+    margin-top: 20px;
+    margin-bottom: 100px;
+}
+#movie_buttons {
+    width: 40%;
+    padding: 10px 0px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0px 20px;
+}
+#movie_buttons>* {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0px 10px;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: 500;
+    border: 1.5px solid transparent;
+    transition: all 0.25s ease;
+}
+#movie_buttons>* i {
+    font-size: 1.1em;
+}
+#movie_buttons>* p {
+    font-size: 0.9em;
+}
+#watch {
+    cursor: pointer;
+    background-color: #006d77;
+}
+#save {
+    cursor: pointer;
+    opacity: 0.85;
+    border-color: #f0f0f0 !important;
+}
+#save:hover {
+    opacity: 1;
+}
+#watch:hover {
+    color: #5bc0be;
+    border-color: #006d77;
+    background-color: transparent;
+}
+#movie_trailer {
+    position: fixed;
+    z-index: 3;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(17, 17, 17, 0.8);
+    backdrop-filter: blur(8px);
+    transition: all 0.25s ease;
+    opacity: 1;
+}
+#trailer {
+    width: 50vw;
+    aspect-ratio: 16/9;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+@keyframes show {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+@keyframes unshow {
+    0% {opacity: 1;}
+    100% {opacity: 0;}
+}
