@@ -32,11 +32,17 @@ class MovieController extends Controller
     {
         $data = $request->validated();
 
-        if($request->hasFile('image')){
-            $image = $request->file('image');
+        if($request->hasFile('cover')){
+            $image = $request->file('cover');
             $imagePath = $image->store('movies', 'public');
     
-            $data['image'] = $imagePath;
+            $data['cover'] = $imagePath;
+        }
+        if($request->hasFile('banner')){
+            $image = $request->file('banner');
+            $imagePath = $image->store('movies', 'public');
+    
+            $data['banner'] = $imagePath;
         }
 
         Movie::create($data);

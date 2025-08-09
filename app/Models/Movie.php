@@ -13,11 +13,14 @@ class Movie extends Model
     use HasFactory, Notifiable;
 
     protected $fillable = [
-        'synopsis',
-        'year',
-        'image',
-        'link',
-        'category_id'
+        "title",
+        "synopsis",
+        "year",
+        "rating",
+        "link",
+        "cover",
+        "banner",
+        "category_id",
     ];
 
     public function category(): BelongsTo {

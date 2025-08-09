@@ -13,10 +13,13 @@ return new class extends Migration
     {
         Schema::create('movies', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
             $table->string('synopsis');
             $table->integer('year');
-            $table->string('image');
+            $table->decimal('rating', 3, 1);
             $table->mediumText('link');
+            $table->string('cover');
+            $table->string('banner');
             $table->foreignId('category_id')->constrained()->onDelete("cascade");
             $table->timestamps();
         });

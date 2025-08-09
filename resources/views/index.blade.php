@@ -3,5 +3,7 @@
     @vite(['resources/css/home.css'])
 @endsection
 @section('content')
-<main></main>
+<main>
+    
+</main>
 @endsection
