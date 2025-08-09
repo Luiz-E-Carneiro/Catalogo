@@ -62,6 +62,10 @@
         </a>
         @endif
     </div>
+    <form id="search_input" method="get" action="" class="closed">
+        <input type="text" name="search_value">
+        <button type="submit" id="submit_search"><i class="fa-solid fa-magnifying-glass"></i></button>
+    </form>
     @yield('content')
     @yield('js')
     @vite(['resources/js/index.js'])

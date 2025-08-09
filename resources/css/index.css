@@ -124,6 +124,19 @@ header nav a:hover {
     cursor: pointer;
     transition: all 0.25s ease;
 }
+#search_input {
+    position: fixed;
+    z-index: 2;
+    height: 35px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background-color: #26262c;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    transition: all 0.25s ease;
+}
 .opened {
     display: flex !important;
 }
@@ -142,4 +155,27 @@ header nav a:hover {
 }
 #profile_dropdown>*:active {
     background-color: #26262c;
+}
+#search_input input {
+    width: 300px;
+    height: 100%;
+    padding: 0px 20px;
+    border: none;
+    outline: none;
+    color: #dadada;
+    font-size: 0.8em;
+    background-color: transparent;
+}
+#search_input button {
+    width: 45px;
+    height: 100%;
+    border: none;
+    font-size: 0.9em;
+    color: #dadada;
+    cursor: pointer;
+    background-color: transparent;
+    transition: all 0.25s ease;
+}
+#search_input button:hover {
+    background-color: #464646;
 }
