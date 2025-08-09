@@ -1,10 +1,14 @@
 @import url('common.css');
+a {
+    color: #f0f0f0;
+}
 body {
     display: flex;
     justify-content: flex-start;
     align-items: center;
     flex-flow: column;
     background-color: #111111;
+    overflow-x: hidden;
 }
 header {
     position: fixed;
@@ -178,4 +182,7 @@ header nav a:hover {
 }
 #search_input button:hover {
     background-color: #464646;
+}
+main {
+    margin-top: 100px;
 }

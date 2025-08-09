@@ -24,6 +24,7 @@ class UpdateMovieRequest extends FormRequest
         return [
             "title" => 'required',
             "synopsis" => 'required',
+            "publisher" => "required",
             "year" => "required|numeric",
             "rating" => 'required',
             "link" => 'required',

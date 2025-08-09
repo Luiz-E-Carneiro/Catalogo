@@ -33,6 +33,7 @@ function search() {
     if (search_input.classList.contains("closed")) {
         search_input.classList.remove("closed")
         search_input.classList.add("opened")
+        search_input.children[0].focus()
     } else {
         search_input.classList.remove("opened")
         search_input.classList.add("closed")

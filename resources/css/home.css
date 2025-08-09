@@ -1,0 +1,238 @@
+main {
+    margin-top: 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-flow: column;
+    gap: 20px 0px;
+}
+section {
+    width: 1200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #dadada;
+}
+#main_movie {
+    width: 100vw;
+    height: 100vh;
+    justify-content: flex-end;
+    flex-flow: column;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(https://static1.cbrimages.com/wordpress/wp-content/uploads/2019/04/Avengers-Endgame-banner-poster.jpg);
+}
+#movie_description {
+    padding: 0px 40px;
+    padding-bottom: 60px;
+    width: 100%;
+    height: 60%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    flex-flow: column;
+    gap: 10px 0px;
+    background: linear-gradient(0deg,rgba(17, 17, 17, 1) 10%, rgba(87, 199, 133, 0) 100%);
+}
+#movie_title {
+    font-size: 2em;
+    font-weight: bold;
+}
+#movie_data {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0px 20px;
+}
+#movie_rate {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0px 10px;
+}
+#movie_rate p {
+    font-size: 0.95em;
+    font-weight: 500;
+}
+#movie_rate div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.85em;
+}
+.colored {
+    color: 	#FFEB3B;
+}
+#movie_category {
+    color: #dadada;
+    font-size: 0.9em;
+    font-weight: 500;
+}
+#movie_date {
+    font-size: 0.9em;
+}
+#synopsis {
+    width: 40%;
+    margin-top: 20px;
+    margin-bottom: 100px;
+}
+#movie_buttons {
+    width: 40%;
+    padding: 10px 0px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0px 20px;
+}
+#movie_buttons a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0px 10px;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: 500;
+    border: 1.5px solid transparent;
+    transition: all 0.25s ease;
+}
+#movie_buttons a i {
+    font-size: 1.1em;
+}
+#movie_buttons a p {
+    font-size: 0.9em;
+}
+#watch {
+    background-color: #006d77;
+}
+#save {
+    opacity: 0.85;
+    border-color: #f0f0f0 !important;
+}
+#save:hover {
+    opacity: 1;
+}
+#watch:hover {
+    color: #5bc0be;
+    border-color: #006d77;
+    background-color: transparent;
+}
+.post_section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+    gap: 10px 0px;
+}
+.section_header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+.post_section h4 {
+    font-size: 1.4em;
+    color: #f0f0f0;
+}
+.section_header a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    gap: 0px 10px;
+    border-radius: 10px;
+}
+.section_header a:hover {
+    background-color: #232323;
+}
+.section_movies {
+    width: 100%;
+    height: 425px;
+    flex-grow: 1;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 100%;
+    gap: 10px;
+}
+.movie {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-flow: column;
+    border-radius: 10px;
+    transition: all 0.25s ease;
+    padding: 5px;
+}
+.movie:hover button {
+    opacity: 1;
+}
+.movie:hover {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    background-color: #232323;
+}
+.movie_cover {
+    width: 100%;
+    height: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-flow: column;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url(https://static.wikia.nocookie.net/marvelcinematicuniverse/images/9/91/Endgame_Poster_2.jpg);
+    border-radius: 5px;
+    padding: 10px;
+}
+.movie_desc {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+    padding: 0px 7.5px;
+}
+.movie_rate {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.9em;
+    gap: 0px 5px;
+}
+.movie_cover button {
+    width: 35px;
+    height: 35px;
+    opacity: 0;
+    color: #f0f0f0;
+    border: 2px solid #f0f0f0;
+    background-color: transparent;
+    border-radius: 100%;
+    backdrop-filter: blur(8px);
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+.movie_desc h5 {
+    font-size: 0.85em;
+}
+.movie_desc a:first-child {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0px;
+}
+.movie_desc a:last-child {
+    font-size: 0.8em;
+    align-self: flex-start;
+}
+#all_movies {
+    margin-top: 100px;
+}
+#all_movies .section_movies {
+    height: auto;
+    grid-template-rows: auto;
+}
+#all_movies .movie {
+    height: 425px;
+}

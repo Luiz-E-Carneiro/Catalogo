@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('synopsis');
+            $table->string('publisher');
             $table->integer('year');
             $table->decimal('rating', 3, 1);
             $table->mediumText('link');

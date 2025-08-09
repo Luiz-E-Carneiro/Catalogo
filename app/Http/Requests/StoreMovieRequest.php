@@ -25,6 +25,7 @@ class StoreMovieRequest extends FormRequest
             "title" => 'required',
             "synopsis" => 'required',
             "year" => "required|numeric",
+            "publisher" => "required",
             "rating" => 'required',
             "link" => 'required',
             "cover" => 'required|mimes:jpeg,png,jpg',
