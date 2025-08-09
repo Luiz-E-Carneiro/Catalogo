@@ -5,11 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Movie;
 use App\Http\Requests\StoreMovieRequest;
 use App\Http\Requests\UpdateMovieRequest;
-use App\Models\Category;
 use Illuminate\Http\Request;
 
 class MovieController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      */
@@ -57,7 +57,8 @@ class MovieController extends Controller
      */
     public function show(Movie $movie)
     {
-        return view('movies.index', compact('movie'));
+        $movie = Movie::findOrFail($movie->id);
+        return view('movies.show', compact('movie'));
     }
 
     /**
@@ -127,7 +128,6 @@ class MovieController extends Controller
         }
 
         $movies = $query->get();
-
         return view('movie.filtered', compact('movies'));
     }
 
@@ -138,8 +138,6 @@ class MovieController extends Controller
         $query = Movie::with('category')->where('rating', '>=', 7);
 
         $movies = $query->get();
-
-        dd($movies);
-        return view('movie.pupular', compact('movies'));
+        return view('movie.popular', compact('movies'));
     }
 }
