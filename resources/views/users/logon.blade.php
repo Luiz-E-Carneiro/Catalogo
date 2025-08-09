@@ -16,7 +16,7 @@
 <body>
     <div id="background">
         <img src="{{asset("system/text_icon.svg")}}" alt="" id="icon">
-        <form action="" method="post">
+        <form action="{{route("auth.logon")}}" method="post">
             @csrf
             <div id="form_title">
                 <h1>Welcome !</h1>
@@ -26,13 +26,13 @@
                 <label for="name">
                     <i class="fa-solid fa-user"></i>
                 </label>
-                <input type="text" id="name" name="name" value="{{old(" name")}}" placeholder="Your user name">
+                <input type="text" id="name" name="name" value="{{old("name")}}" placeholder="Your user name">
             </div>
             <div class="input_module">
                 <label for="email">
                     <i class="fa-solid fa-envelope"></i>
                 </label>
-                <input type="email" id="email" name="email" value="{{old(" email")}}" placeholder="Your email">
+                <input type="email" id="email" name="email" value="{{old("email")}}" placeholder="Your email">
             </div>
             <div class="input_module">
                 <label for="password">
@@ -56,7 +56,7 @@
             <div id="login_options">
                 <div class="option">
                     <div class="checkbox">
-                        <input type="hidden" name="remember" value="{{old(" remember")}}">
+                        <input type="hidden" name="remember" value="{{old("remember")}}">
                         <div class="box">
                             <div class="box_item"></div>
                         </div>

@@ -2,8 +2,9 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use Illuminate\Validation\Rules\Password;
+use Illuminate\Foundation\Http\FormRequest;
 
 class UserRequest extends FormRequest
 {
@@ -28,25 +29,20 @@ class UserRequest extends FormRequest
 
         $rules = [
                 'name' => ['required', 'string', 'max:255'],
-                'email'=> ['requeired', 'email', Rule::unique('users')->ignore($this->user()->id)],
+                'email'=> ['required', 'email', Rule::unique('users')->ignore($this->user()->id)],
                 'password' => ['required'],
             ];
         */
-        $isLogon = $this->get('is_logon', false);
+        $isLogon = $this->boolean('is_logon');
 
-        $rules = [];
-
-        if($isLogon){
-            $rules = [
-                'name' => ['required', 'string', 'max:255'],
-                'email'=> ['requeired', 'email', 'unique:users,email'],
-                'password' => ['required', 'confirmed'],
-            ];
-        } else {
-            $rules = [
-                'email' => ['required', 'email'],
-                'password' => ['required']
-            ];
+        $rules = [
+            'email' => ['required', 'email'],
+            'password' => ['required']
+        ];
+        if ($isLogon){
+            $rules["name"] = ['required', "min:5", "max:25"];
+            $rules["email"] = ['required', 'email', 'unique:users,email'];
+            $rules["password"] = ['required', "confirmed", Password::min(8)->letters()->numbers()];
         }
 
         return $rules;

@@ -6,11 +6,64 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="icon" href="{{asset("system/icon.svg")}}">
+    @vite(['resources/css/index.css'])
     <title>Capybara Cinema</title>
     @yield('head')
 </head>
 <body>
+    <header>
+        <a id="logo" href="">
+            <img src="{{asset("system/white_icon.svg")}}" alt="">
+        </a>
+        <nav>
+            <a href="">
+                <i class="fa-solid fa-house"></i>
+                <p>Home</p>
+            </a>
+            <a href="">
+                <i class="fa-solid fa-film"></i>
+                <p>Recent Added</p>
+            </a>
+            <a href="">
+                <i class="fa-solid fa-fire"></i>
+                <p>Popular</p>
+            </a>
+            <a href="">
+                <i class="fa-solid fa-clapperboard"></i>
+                <p>Add a movie</p>
+            </a>
+        </nav>
+        <div id="right_header">
+            <button type="button" id="search_button"><i class="fa-solid fa-magnifying-glass"></i></button>
+            <button type="button" id="dark_mode"><i class="fa-solid fa-moon"></i></button>
+            <div id="profile_button" style="background-image: url({{asset(Auth::check() ? Auth::user()->profile : "system/default_profile.svg")}})"></div>
+        </div>
+    </header>
+    <div id="profile_dropdown" class="closed">
+        @if (Auth::check())
+        <a href="">
+            <i class="fa-solid fa-user"></i>
+            <p>Your Profile</p>
+        </a>
+        <div>
+            <i class="fa-solid fa-moon"></i>
+            <p>Dark Mode</p>
+        </div>
+        <a href="{{route("logout")}}">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <p>Logout</p>
+        </a>
+        @else
+        <a href="{{route("login")}}">
+            <p>Sign in</p>
+        </a>
+        <a href="{{route("logon")}}">
+            <p>New account</p>
+        </a>
+        @endif
+    </div>
     @yield('content')
     @yield('js')
+    @vite(['resources/js/index.js'])
 </body>
 </html>

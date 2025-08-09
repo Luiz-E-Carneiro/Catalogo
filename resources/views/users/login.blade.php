@@ -16,7 +16,7 @@
 <body>
     <div id="background">
         <img src="{{asset("system/text_icon.svg")}}" alt="" id="icon">
-        <form action="" method="post">
+        <form action="{{route("auth.login")}}" method="post">
             @csrf
             <div id="form_title">
                 <h1>Welcome again !</h1>
