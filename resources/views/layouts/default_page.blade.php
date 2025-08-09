@@ -37,6 +37,7 @@
             <button type="button" id="search_button"><i class="fa-solid fa-magnifying-glass"></i></button>
             <button type="button" id="dark_mode"><i class="fa-solid fa-moon"></i></button>
             <div id="profile_button" style="background-image: url({{asset(Auth::check() ? Auth::user()->profile : "system/default_profile.svg")}})"></div>
+            <!-- <div id="profile_button" class="profile-bg" data-image="{{ asset(Auth::check() ? (Auth::user()->profile ?? 'system/default_profile.svg') : 'system/default_profile.svg') }}"></div> -->
         </div>
     </header>
     <div id="profile_dropdown" class="closed">
@@ -62,8 +63,8 @@
         </a>
         @endif
     </div>
-    <form id="search_input" method="get" action="" class="closed">
-        <input type="text" name="search_value">
+    <form id="search_input" method="get" action="movie/filtered" class="closed">
+        <input type="text" name="title">
         <button type="submit" id="submit_search"><i class="fa-solid fa-magnifying-glass"></i></button>
     </form>
     @yield('content')
