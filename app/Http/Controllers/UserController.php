@@ -12,17 +12,17 @@ use Illuminate\Validation\Rules\Password;
 
 class UserController extends Controller
 {
-    public function login() {
+    public function login()
+    {
         return view("users.login");
     }
-    public function logon() {
+    public function logon()
+    {
         return view("users.logon");
     }
-    public function auth_login(Request $request) {
-        $data = $request->validate([
-            'email' => ['required', 'email'],
-            'password' => ['required'],
-        ]);
+    public function auth_login(UserRequest $request)
+    {
+        $data = $request->validated();
         $user = User::where("email", "=", $data["email"])->first();
         if (empty($user) || !Hash::check($data["password"], $user["password"])) {
             return redirect()->route("login")->withErrors([
@@ -36,10 +36,23 @@ class UserController extends Controller
             return redirect()->route("index");
         }
     }
+    
+    public function auth_logon(UserRequest $request)
+    {
+        $data = $request->validated();
 
-    public function auth_logon(Request $request) {
+        $data["password"] = Hash::make($data["password"]);
+        $user = User::create($data);
+        Auth::login($user);
+
+        return redirect()->route("index")->with('Success', 'Conta criada com sucesso');
+    }
+
+/*
+    public function auth_logon(Request $request)
+    {
         $data = $request->validate([
-            "name" => ['required', "min:5", "max:25"],
+            "name" => ['required', "min:4", "max:25"],
             "email" => ['required', 'email', 'unique:users,email'],
             "password" => ['required', "confirmed", Password::min(8)->letters()->numbers()],
         ]);
@@ -47,57 +60,67 @@ class UserController extends Controller
         $data["password"] = Hash::make($data["password"]);
         $user = User::create($data);
         Auth::login($user);
-        
+
         return redirect()->route("index")->with('Success', 'Conta criada com sucesso');
     }
-    public function logout() {
+ */
+
+    public function logout()
+    {
         Auth::logout();
         return redirect()->route("index");
     }
 
-    public function index() {
+    public function index()
+    {
         //
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create() {
+    public function create()
+    {
         //
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
         //
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id) {
+    public function show(string $id)
+    {
         //
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id) {
+    public function edit(string $id)
+    {
         //
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id) {
+    public function update(Request $request, string $id)
+    {
         //
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id) {
+    public function destroy(string $id)
+    {
         //
     }
 }

@@ -16,13 +16,20 @@ class UserRequest extends FormRequest
         return true;
     }
 
+    protected function prepareForValidation()
+    {
+        $this->merge([
+            'is_logon' => $this->routeIs('auth.logon')
+        ]);
+    }
+
     /**
      * Get the validation rules that apply to the request.
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
     public function rules()
-    { 
+    {
         /* CASO HOUVER Update de user
         
         $isUpdate = $this->get('is_update', false);
@@ -32,17 +39,32 @@ class UserRequest extends FormRequest
                 'email'=> ['required', 'email', Rule::unique('users')->ignore($this->user()->id)],
                 'password' => ['required'],
             ];
-        */
+            $isLogon = $this->boolean('is_logon');
+            
+            $rules = [
+                'email' => ['required', 'email'],
+                'password' => ['required']
+            ];
+            if ($isLogon){
+                $rules["name"] = ['required', "min:5", "max:25"];
+                $rules["email"] = ['required', 'email', 'unique:users,email'];
+                $rules["password"] = ['required', "confirmed", Password::min(8)->letters()->numbers()];
+            }
+            */
         $isLogon = $this->boolean('is_logon');
+        $rules = [];
 
-        $rules = [
-            'email' => ['required', 'email'],
-            'password' => ['required']
-        ];
-        if ($isLogon){
-            $rules["name"] = ['required', "min:5", "max:25"];
-            $rules["email"] = ['required', 'email', 'unique:users,email'];
-            $rules["password"] = ['required', "confirmed", Password::min(8)->letters()->numbers()];
+        if ($isLogon) {
+            $rules = [
+                "name" => ['required', "min:4", "max:25"],
+                "email" => ['required', 'email', 'unique:users,email'],
+                "password" => ['required', "confirmed", Password::min(8)->letters()->numbers()]
+            ];
+        } else {
+            $rules = [
+                'email' => ['required', 'email'],
+                'password' => ['required']
+            ];
         }
 
         return $rules;
