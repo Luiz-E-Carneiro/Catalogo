@@ -23,10 +23,13 @@ class GeneralController extends Controller {
             ->groupBy('movies.id')
             ->orderByDesc('saves_count')
             ->first()->toArray()["id"];
+        $first_movie = Movie::find($first_movie);
+        $first_movie["rating"] = $first_movie->rating * 5 / 10;
         return view("index", [
             "all_movies" => Movie::orderBy("created_at", "desc"),
             "wish_list" => $wish_list,
-            "first_movie" => Movie::find($first_movie),
+            "first_movie" => $first_movie,
+            "star_count" => (int) $first_movie->rating,
         ]);
     }
 }

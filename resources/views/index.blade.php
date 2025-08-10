@@ -4,26 +4,30 @@
 @endsection
 @section('content')
 <main>
-    <section id="main_movie">
+    <section id="main_movie" style="background-image: url({{asset("storage/banners/shrek.jpg")}})">
         <div id="movie_description">
-            <a href="" id="movie_title">Avengers: End Game</a>
+            <a href="" id="movie_title">{{$first_movie->title}}</a>
             <a href="" id="movie_data">
-                <div id="movie_category">Category</div>
+                <div id="movie_category">{{$first_movie->category->name}}</div>
                 <p>|</p>
-                <div id="movie_date">2018</div>
+                <div id="movie_date">{{$first_movie->year}}</div>
                 <p>|</p>
                 <div id="movie_rate">
-                    <p>5.5/10</p>
+                    <p>{{$first_movie->rating}}/10</p>
                     <div>
-                        <i class="fa-solid fa-star colored"></i>
-                        <i class="fa-solid fa-star colored"></i>
-                        <i class="fa-solid fa-star colored"></i>
-                        <i class="fa-solid fa-star-half-stroke colored"></i>
-                        <i class="fa-regular fa-star"></i>
+                        @for ($i = 0; $i <= 4; $i++)
+                            @if ($i <= ($star_count-1))
+                            <i class="fa-solid fa-star colored"></i>
+                            @elseif ($star_count == $i && $star_count != $first_movie->rating)
+                            <i class="fa-solid fa-star-half-stroke colored"></i>
+                            @else
+                            <i class="fa-regular fa-star"></i>
+                            @endif
+                        @endfor
                     </div>
                 </div>
             </a>
-            <a href="" id="synopsis">Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo, aliquid optio? Aut dignissimos facilis pariatur dolor, nostrum magni, sed totam inventore fugiat tenetur explicabo molestiae consequatur odit ut laborum veniam!</a>
+            <a href="" id="synopsis">{{$first_movie->synopsis}}</a>
             <div id="movie_buttons">
                 <a href="" id="watch">
                     <i class="fa-solid fa-play"></i>
