@@ -36,7 +36,7 @@ class UserController extends Controller
             return redirect()->route("index");
         }
     }
-    
+
     public function auth_logon(UserRequest $request)
     {
         $data = $request->validated();
@@ -47,23 +47,6 @@ class UserController extends Controller
 
         return redirect()->route("index")->with('Success', 'Conta criada com sucesso');
     }
-
-/*
-    public function auth_logon(Request $request)
-    {
-        $data = $request->validate([
-            "name" => ['required', "min:4", "max:25"],
-            "email" => ['required', 'email', 'unique:users,email'],
-            "password" => ['required', "confirmed", Password::min(8)->letters()->numbers()],
-        ]);
-
-        $data["password"] = Hash::make($data["password"]);
-        $user = User::create($data);
-        Auth::login($user);
-
-        return redirect()->route("index")->with('Success', 'Conta criada com sucesso');
-    }
- */
 
     public function logout()
     {
@@ -105,22 +88,28 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $user = Auth::user();
+        return view('user.edit', compact('user'));
     }
+
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UserRequest $request, string $id)
     {
-        //
+        $data = $request->validated();
+
+        $user = User::findOrFail($id);
+        $user->update($data);
+
+        return redirect()->route('user.edit', $user->id)->with('success', 'Dados atualizados com sucesso!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
-    {
-        //
+    public function destroy(string $id) {
+        // Verificar se é admin ou não, dps exclui. Dependendo de quem for, faz o logout.
     }
 }
