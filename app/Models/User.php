@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -19,9 +20,12 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-        'name',
-        'email',
-        'password',
+        "name",
+        "email",
+        "email_verified_at",
+        "password",
+        "profile",
+        "role",
     ];
 
     /**
@@ -46,8 +50,10 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
-    
     public function favorites(): BelongsToMany {
         return $this->belongsToMany(Movie::class, 'favorites')->withTimestamps();
+    }
+    public function wish_list(): HasMany {
+        return $this->hasMany(Favorite::class);
     }
 }

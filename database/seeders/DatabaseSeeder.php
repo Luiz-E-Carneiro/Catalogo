@@ -22,9 +22,16 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make("admin"),
             'role' => 'admin'
         ]);
+        User::factory()->create([
+            'name' => 'test',
+            'email' => 'test@gmail.com',
+            'password' => Hash::make("test"),
+        ]);
 
-         $this->call(CategorySeeder::class);
-         $this->call(MovieSeeder::class);
-         $this->call(FavoriteSeeder::class);
+        $this->call([
+            CategorySeeder::class,
+            MovieSeeder::class,
+            FavoriteSeeder::class,
+        ]);
     }
 }

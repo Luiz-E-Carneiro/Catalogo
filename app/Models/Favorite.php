@@ -23,4 +23,5 @@ class Favorite extends Model
     public function movie(): BelongsTo{
         return $this->belongsTo(Movie::class);
     }
+
 }

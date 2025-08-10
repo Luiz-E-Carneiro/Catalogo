@@ -34,6 +34,187 @@
                     <i class="fa-solid fa-bookmark"></i>
                     <p>Save in Wish List</p>
                 </a>
+                <div id="settings">
+                    <i class="fa-solid fa-gear"></i>
+                    <p>Settings</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="all_movies" class="post_section">
+        <div class="section_header">
+            <h4>You might like</h4>
+        </div>
+        <div class="section_movies">
+            <div class="movie">
+                <a href="{{route("movie.show", 1)}}" class="movie_cover">
+                    <button id="wish_list">
+                        <i class="fa-regular fa-bookmark"></i>
+                    </button>
+                    <div class="movie_rate">
+                        <p>5.5/10</p>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                </a>
+                <div class="movie_desc">
+                    <a href="">
+                        <h5>Avengers: End Game</h5>
+                    </a>
+                    <a href="">Action</a>
+                </div>
+            </div>
+            <div class="movie">
+                <a href="{{route("movie.show", 1)}}" class="movie_cover">
+                    <button id="wish_list">
+                        <i class="fa-regular fa-bookmark"></i>
+                    </button>
+                    <div class="movie_rate">
+                        <p>5.5/10</p>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                </a>
+                <div class="movie_desc">
+                    <a href="">
+                        <h5>Avengers: End Game</h5>
+                    </a>
+                    <a href="">Action</a>
+                </div>
+            </div>
+            <div class="movie">
+                <a href="{{route("movie.show", 1)}}" class="movie_cover">
+                    <button id="wish_list">
+                        <i class="fa-regular fa-bookmark"></i>
+                    </button>
+                    <div class="movie_rate">
+                        <p>5.5/10</p>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                </a>
+                <div class="movie_desc">
+                    <a href="">
+                        <h5>Avengers: End Game</h5>
+                    </a>
+                    <a href="">Action</a>
+                </div>
+            </div>
+            <div class="movie">
+                <a href="{{route("movie.show", 1)}}" class="movie_cover">
+                    <button id="wish_list">
+                        <i class="fa-regular fa-bookmark"></i>
+                    </button>
+                    <div class="movie_rate">
+                        <p>5.5/10</p>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                </a>
+                <div class="movie_desc">
+                    <a href="">
+                        <h5>Avengers: End Game</h5>
+                    </a>
+                    <a href="">Action</a>
+                </div>
+            </div>
+            <div class="movie">
+                <a href="{{route("movie.show", 1)}}" class="movie_cover">
+                    <button id="wish_list">
+                        <i class="fa-regular fa-bookmark"></i>
+                    </button>
+                    <div class="movie_rate">
+                        <p>5.5/10</p>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                </a>
+                <div class="movie_desc">
+                    <a href="">
+                        <h5>Avengers: End Game</h5>
+                    </a>
+                    <a href="">Action</a>
+                </div>
+            </div>
+            <div class="movie">
+                <a href="{{route("movie.show", 1)}}" class="movie_cover">
+                    <button id="wish_list">
+                        <i class="fa-regular fa-bookmark"></i>
+                    </button>
+                    <div class="movie_rate">
+                        <p>5.5/10</p>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                </a>
+                <div class="movie_desc">
+                    <a href="">
+                        <h5>Avengers: End Game</h5>
+                    </a>
+                    <a href="">Action</a>
+                </div>
+            </div>
+            <div class="movie">
+                <a href="{{route("movie.show", 1)}}" class="movie_cover">
+                    <button id="wish_list">
+                        <i class="fa-regular fa-bookmark"></i>
+                    </button>
+                    <div class="movie_rate">
+                        <p>5.5/10</p>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                </a>
+                <div class="movie_desc">
+                    <a href="">
+                        <h5>Avengers: End Game</h5>
+                    </a>
+                    <a href="">Action</a>
+                </div>
+            </div>
+            <div class="movie">
+                <a href="{{route("movie.show", 1)}}" class="movie_cover">
+                    <button id="wish_list">
+                        <i class="fa-regular fa-bookmark"></i>
+                    </button>
+                    <div class="movie_rate">
+                        <p>5.5/10</p>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                </a>
+                <div class="movie_desc">
+                    <a href="">
+                        <h5>Avengers: End Game</h5>
+                    </a>
+                    <a href="">Action</a>
+                </div>
+            </div>
+            <div class="movie">
+                <a href="{{route("movie.show", 1)}}" class="movie_cover">
+                    <button id="wish_list">
+                        <i class="fa-regular fa-bookmark"></i>
+                    </button>
+                    <div class="movie_rate">
+                        <p>5.5/10</p>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                </a>
+                <div class="movie_desc">
+                    <a href="">
+                        <h5>Avengers: End Game</h5>
+                    </a>
+                    <a href="">Action</a>
+                </div>
+            </div>
+            <div class="movie">
+                <a href="{{route("movie.show", 1)}}" class="movie_cover">
+                    <button id="wish_list">
+                        <i class="fa-regular fa-bookmark"></i>
+                    </button>
+                    <div class="movie_rate">
+                        <p>5.5/10</p>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                </a>
+                <div class="movie_desc">
+                    <a href="">
+                        <h5>Avengers: End Game</h5>
+                    </a>
+                    <a href="">Action</a>
+                </div>
             </div>
         </div>
     </section>

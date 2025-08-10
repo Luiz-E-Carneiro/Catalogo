@@ -17,11 +17,11 @@ class MovieFactory extends Factory
         $banners = collect(File::files($bannersDir))->map(fn($file) => 'storage/banners/' . $file->getFilename());
 
         return [
-            'title' => $this->faker->sentence(3),
-            'synopsis' => $this->faker->paragraph(),
-            'publisher' => $this->faker->sentence(2),
-            'year' => $this->faker->numberBetween(1980, 2025),
-            'rating' => $this->faker->randomFloat(1, 0, 10), // 0.0 a 10.0
+            'title' => fake()->sentence(3),
+            'synopsis' => fake()->paragraph(),
+            'publisher' => fake()->sentence(2),
+            'year' => fake()->numberBetween(1980, 2025),
+            'rating' => fake()->randomFloat(1, 0, 10), // 0.0 a 10.0
             'link' => 'https://www.youtube.com/watch?v=' . $this->faker->regexify('[A-Za-z0-9_-]{11}'),
             'cover' => $covers->isNotEmpty() ? $covers->random() : null,
             'banner' => $banners->isNotEmpty() ? $banners->random() : null,
