@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Favorite extends Model
 {
@@ -16,11 +16,11 @@ class Favorite extends Model
         'user_id'
     ];
 
-    public function user(): BelongsToMany{
-        return $this->belongsToMany(User::class);
+    public function user(): BelongsTo{
+        return $this->belongsTo(User::class);
     }
 
-    public function movie(): BelongsToMany{
-        return $this->belongsToMany(Movie::class);
+    public function movie(): BelongsTo{
+        return $this->belongsTo(Movie::class);
     }
 }

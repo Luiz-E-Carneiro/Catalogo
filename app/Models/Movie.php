@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Notifications\Notifiable;
 
 class Movie extends Model
@@ -28,7 +28,7 @@ class Movie extends Model
     public function category(): BelongsTo {
         return $this->belongsTo(Category::class);
     }
-    public function favorite(): HasMany {
-        return $this->hasMany(Favorite::class, 'favorites');
+    public function favorited():  BelongsToMany{
+        return $this->belongsToMany(User::class, 'favorites')->withTimestamps();
     }
 }

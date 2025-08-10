@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Favorite;
 use App\Http\Requests\StoreFavoriteRequest;
 use App\Http\Requests\UpdateFavoriteRequest;
+use Illuminate\Support\Facades\Auth;
 
 class FavoriteController extends Controller
 {
@@ -13,7 +14,11 @@ class FavoriteController extends Controller
      */
     public function index()
     {
-        //
+        $user = Auth::user();
+
+        $favorites = $user->favorites()->with('category')->get();
+
+        return view('favorites.index', compact('favorites'));
     }
 
     /**
@@ -29,7 +34,12 @@ class FavoriteController extends Controller
      */
     public function store(StoreFavoriteRequest $request)
     {
-        //
+        $user = Auth::user();
+        $data = $request->validated();
+        
+        $user->favorites()->syncWithoutDetaching([$data['movie_id']]);
+
+        return redirect()->back()->with('success', 'Filme adicionado aos favoritos com sucesso!');
     }
 
     /**
@@ -61,6 +71,10 @@ class FavoriteController extends Controller
      */
     public function destroy(Favorite $favorite)
     {
-        //
+        $user = Auth::user();
+
+        $user->favorites()->detach($favorite->id);
+
+        return redirect()->back()->with('success', 'Filme removido dos favoritos com sucesso!');
     }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\GeneralController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\UserController;
@@ -37,6 +38,10 @@ Route::middleware('owns.account')->group(function () {
 Route::prefix("/auth")->group(function() {
     Route::post("/login", [UserController::class, "auth_login"])->name("auth.login");
     Route::post("/logon", [UserController::class, "auth_logon"])->name("auth.logon");
+});
+
+Route::middleware('auth')->group(function() {
+    Route::resource('/favorites', FavoriteController::class);
 });
 
 Route::get("/login", [UserController::class, "login"])->name("login");
