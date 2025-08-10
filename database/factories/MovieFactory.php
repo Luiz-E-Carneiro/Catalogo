@@ -10,11 +10,11 @@ class MovieFactory extends Factory
 {
     public function definition(): array
     {
-        $coversDir = public_path('storage/cover');
-        $bannersDir = public_path('storage/banner');
+        $coversDir = public_path('storage/covers');
+        $bannersDir = public_path('storage/banners');
 
-        $covers = collect(File::files($coversDir))->map(fn($file) => 'storage/covers/' . $file->getFilename());
-        $banners = collect(File::files($bannersDir))->map(fn($file) => 'storage/banners/' . $file->getFilename());
+        $covers = collect(File::files($coversDir))->map(fn($file) => 'covers/' . $file->getFilename());
+        $banners = collect(File::files($bannersDir))->map(fn($file) => 'banners/' . $file->getFilename());
 
         return [
             'title' => fake()->sentence(3),
