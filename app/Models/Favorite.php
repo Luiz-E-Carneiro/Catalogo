@@ -10,14 +10,18 @@ class Favorite extends Model
 {
     /** @use HasFactory<\Database\Factories\FavoriteFactory> */
     use HasFactory;
+
     protected $fillable = [
-        "movie_id",
-        "user_id",
+        'movie_id', 
+        'user_id'
     ];
-    public function movie(): BelongsTo {
-        return $this->belongsTo(Movie::class);
-    }
-    public function user(): BelongsTo {
+
+    public function user(): BelongsTo{
         return $this->belongsTo(User::class);
     }
+
+    public function movie(): BelongsTo{
+        return $this->belongsTo(Movie::class);
+    }
+
 }
