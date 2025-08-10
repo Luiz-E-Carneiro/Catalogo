@@ -4,29 +4,33 @@
 @endsection
 @section('content')
 <main>
-    <section id="movie">
+    <section id="movie" style="background-image: url({{asset("storage/".$movie->banner)}})">
         <div id="movie_description">
-            <div href="" id="movie_title">Avengers: End Game</div>
-            <div href="" id="movie_data">
-                <div id="movie_category">Action</div>
+            <div id="movie_title">{{$movie->title}}</div>
+            <div id="movie_data">
+                <div id="movie_category">{{$movie->category->name}}</div>
                 <div id="movie_rate">
-                    <p>5.5/10</p>
+                    <p>{{$movie->rating}}/10</p>
                     <div>
-                        <i class="fa-solid fa-star colored"></i>
-                        <i class="fa-solid fa-star colored"></i>
-                        <i class="fa-solid fa-star colored"></i>
-                        <i class="fa-solid fa-star-half-stroke colored"></i>
-                        <i class="fa-regular fa-star"></i>
+                        @for ($i = 0; $i <= 4; $i++)
+                            @if ($i <= ($movie["star_count"]-1))
+                            <i class="fa-solid fa-star colored"></i>
+                            @elseif ($movie["star_count"] == $i && $movie["star_count"] != $movie["custom_rating"])
+                            <i class="fa-solid fa-star-half-stroke colored"></i>
+                            @else
+                            <i class="fa-regular fa-star"></i>
+                            @endif
+                        @endfor
                     </div>
                 </div>
                 <p>|</p>
-                <div id="movie_date">2018</div>
+                <div id="movie_date">{{$movie->category->name}}</div>
                 <p>|</p>
-                <div id="movie_publisher">Marvel Comics</div>
+                <div id="movie_publisher">{{$movie->publisher}}</div>
             </div>
-            <div href="" id="synopsis">Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo, aliquid optio? Aut dignissimos facilis pariatur dolor, nostrum magni, sed totam inventore fugiat tenetur explicabo molestiae consequatur odit ut laborum veniam!</div>
+            <div id="synopsis">{{$movie->synopsis}}</div>
             <div id="movie_buttons">
-                <div href="" id="watch">
+                <div id="watch">
                     <i class="fa-solid fa-play"></i>
                     <p>Watch Trailer</p>
                 </div>
@@ -46,176 +50,25 @@
             <h4>You might like</h4>
         </div>
         <div class="section_movies">
+            @foreach ($related_movies as $movie)
             <div class="movie">
-                <a href="{{route("movie.show", 1)}}" class="movie_cover">
+                <a href="{{route("movie.show", $movie->id)}}" style="background-image: url({{asset("storage/")."/".$movie->cover}});" class="movie_cover">
                     <button id="wish_list">
                         <i class="fa-regular fa-bookmark"></i>
                     </button>
                     <div class="movie_rate">
-                        <p>5.5/10</p>
+                        <p>{{$movie->rating}}/10</p>
                         <i class="fa-solid fa-star"></i>
                     </div>
                 </a>
                 <div class="movie_desc">
                     <a href="">
-                        <h5>Avengers: End Game</h5>
+                        <h5>{{$movie->title}}</h5>
                     </a>
-                    <a href="">Action</a>
+                    <a href="">{{$movie->category->name}}</a>
                 </div>
             </div>
-            <div class="movie">
-                <a href="{{route("movie.show", 1)}}" class="movie_cover">
-                    <button id="wish_list">
-                        <i class="fa-regular fa-bookmark"></i>
-                    </button>
-                    <div class="movie_rate">
-                        <p>5.5/10</p>
-                        <i class="fa-solid fa-star"></i>
-                    </div>
-                </a>
-                <div class="movie_desc">
-                    <a href="">
-                        <h5>Avengers: End Game</h5>
-                    </a>
-                    <a href="">Action</a>
-                </div>
-            </div>
-            <div class="movie">
-                <a href="{{route("movie.show", 1)}}" class="movie_cover">
-                    <button id="wish_list">
-                        <i class="fa-regular fa-bookmark"></i>
-                    </button>
-                    <div class="movie_rate">
-                        <p>5.5/10</p>
-                        <i class="fa-solid fa-star"></i>
-                    </div>
-                </a>
-                <div class="movie_desc">
-                    <a href="">
-                        <h5>Avengers: End Game</h5>
-                    </a>
-                    <a href="">Action</a>
-                </div>
-            </div>
-            <div class="movie">
-                <a href="{{route("movie.show", 1)}}" class="movie_cover">
-                    <button id="wish_list">
-                        <i class="fa-regular fa-bookmark"></i>
-                    </button>
-                    <div class="movie_rate">
-                        <p>5.5/10</p>
-                        <i class="fa-solid fa-star"></i>
-                    </div>
-                </a>
-                <div class="movie_desc">
-                    <a href="">
-                        <h5>Avengers: End Game</h5>
-                    </a>
-                    <a href="">Action</a>
-                </div>
-            </div>
-            <div class="movie">
-                <a href="{{route("movie.show", 1)}}" class="movie_cover">
-                    <button id="wish_list">
-                        <i class="fa-regular fa-bookmark"></i>
-                    </button>
-                    <div class="movie_rate">
-                        <p>5.5/10</p>
-                        <i class="fa-solid fa-star"></i>
-                    </div>
-                </a>
-                <div class="movie_desc">
-                    <a href="">
-                        <h5>Avengers: End Game</h5>
-                    </a>
-                    <a href="">Action</a>
-                </div>
-            </div>
-            <div class="movie">
-                <a href="{{route("movie.show", 1)}}" class="movie_cover">
-                    <button id="wish_list">
-                        <i class="fa-regular fa-bookmark"></i>
-                    </button>
-                    <div class="movie_rate">
-                        <p>5.5/10</p>
-                        <i class="fa-solid fa-star"></i>
-                    </div>
-                </a>
-                <div class="movie_desc">
-                    <a href="">
-                        <h5>Avengers: End Game</h5>
-                    </a>
-                    <a href="">Action</a>
-                </div>
-            </div>
-            <div class="movie">
-                <a href="{{route("movie.show", 1)}}" class="movie_cover">
-                    <button id="wish_list">
-                        <i class="fa-regular fa-bookmark"></i>
-                    </button>
-                    <div class="movie_rate">
-                        <p>5.5/10</p>
-                        <i class="fa-solid fa-star"></i>
-                    </div>
-                </a>
-                <div class="movie_desc">
-                    <a href="">
-                        <h5>Avengers: End Game</h5>
-                    </a>
-                    <a href="">Action</a>
-                </div>
-            </div>
-            <div class="movie">
-                <a href="{{route("movie.show", 1)}}" class="movie_cover">
-                    <button id="wish_list">
-                        <i class="fa-regular fa-bookmark"></i>
-                    </button>
-                    <div class="movie_rate">
-                        <p>5.5/10</p>
-                        <i class="fa-solid fa-star"></i>
-                    </div>
-                </a>
-                <div class="movie_desc">
-                    <a href="">
-                        <h5>Avengers: End Game</h5>
-                    </a>
-                    <a href="">Action</a>
-                </div>
-            </div>
-            <div class="movie">
-                <a href="{{route("movie.show", 1)}}" class="movie_cover">
-                    <button id="wish_list">
-                        <i class="fa-regular fa-bookmark"></i>
-                    </button>
-                    <div class="movie_rate">
-                        <p>5.5/10</p>
-                        <i class="fa-solid fa-star"></i>
-                    </div>
-                </a>
-                <div class="movie_desc">
-                    <a href="">
-                        <h5>Avengers: End Game</h5>
-                    </a>
-                    <a href="">Action</a>
-                </div>
-            </div>
-            <div class="movie">
-                <a href="{{route("movie.show", 1)}}" class="movie_cover">
-                    <button id="wish_list">
-                        <i class="fa-regular fa-bookmark"></i>
-                    </button>
-                    <div class="movie_rate">
-                        <p>5.5/10</p>
-                        <i class="fa-solid fa-star"></i>
-                    </div>
-                </a>
-                <div class="movie_desc">
-                    <a href="">
-                        <h5>Avengers: End Game</h5>
-                    </a>
-                    <a href="">Action</a>
-                </div>
-            </div>
+            @endforeach
         </div>
     </section>
     <section class="post_section">
@@ -227,91 +80,25 @@
             </a>
         </div>
         <div class="section_movies">
+            @foreach ($wish_list as $movie)
             <div class="movie">
-                <a href="{{route("movie.show", 1)}}" class="movie_cover">
+                <a href="{{route("movie.show", $movie->movie->id)}}" style="background-image: url({{asset("storage/")."/".$movie->movie->cover}});" class="movie_cover">
                     <button id="wish_list">
                         <i class="fa-regular fa-bookmark"></i>
                     </button>
                     <div class="movie_rate">
-                        <p>5.5/10</p>
+                        <p>{{$movie->movie->rating}}/10</p>
                         <i class="fa-solid fa-star"></i>
                     </div>
                 </a>
                 <div class="movie_desc">
                     <a href="">
-                        <h5>Avengers: End Game</h5>
+                        <h5>{{$movie->movie->title}}</h5>
                     </a>
-                    <a href="">Action</a>
+                    <a href="">{{$movie->movie->category->name}}</a>
                 </div>
             </div>
-            <div class="movie">
-                <a href="{{route("movie.show", 1)}}" class="movie_cover">
-                    <button id="wish_list">
-                        <i class="fa-regular fa-bookmark"></i>
-                    </button>
-                    <div class="movie_rate">
-                        <p>5.5/10</p>
-                        <i class="fa-solid fa-star"></i>
-                    </div>
-                </a>
-                <div class="movie_desc">
-                    <a href="">
-                        <h5>Avengers: End Game</h5>
-                    </a>
-                    <a href="">Action</a>
-                </div>
-            </div>
-            <div class="movie">
-                <a href="{{route("movie.show", 1)}}" class="movie_cover">
-                    <button id="wish_list">
-                        <i class="fa-regular fa-bookmark"></i>
-                    </button>
-                    <div class="movie_rate">
-                        <p>5.5/10</p>
-                        <i class="fa-solid fa-star"></i>
-                    </div>
-                </a>
-                <div class="movie_desc">
-                    <a href="">
-                        <h5>Avengers: End Game</h5>
-                    </a>
-                    <a href="">Action</a>
-                </div>
-            </div>
-            <div class="movie">
-                <a href="{{route("movie.show", 1)}}" class="movie_cover">
-                    <button id="wish_list">
-                        <i class="fa-regular fa-bookmark"></i>
-                    </button>
-                    <div class="movie_rate">
-                        <p>5.5/10</p>
-                        <i class="fa-solid fa-star"></i>
-                    </div>
-                </a>
-                <div class="movie_desc">
-                    <a href="">
-                        <h5>Avengers: End Game</h5>
-                    </a>
-                    <a href="">Action</a>
-                </div>
-            </div>
-            <div class="movie">
-                <a href="{{route("movie.show", 1)}}" class="movie_cover">
-                    <button id="wish_list">
-                        <i class="fa-regular fa-bookmark"></i>
-                    </button>
-                    <div class="movie_rate">
-                        <p>5.5/10</p>
-                        <i class="fa-solid fa-star"></i>
-                    </div>
-                </a>
-                <div class="movie_desc">
-                    <a href="">
-                        <h5>Avengers: End Game</h5>
-                    </a>
-                    <a href="">Action</a>
-                </div>
-            </div>
+            @endforeach
         </div>
     </section>
 </main>

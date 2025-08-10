@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Movie;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreMovieRequest;
 use App\Http\Requests\UpdateMovieRequest;
-use Illuminate\Http\Request;
 
 class MovieController extends Controller
 {
@@ -52,9 +53,18 @@ class MovieController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Movie $movie)
-    {
-        return view('movies.index', compact('movie'));
+    public function show(Movie $movie) {
+        $wish_list = [];
+        if (Auth::check() && !empty(Auth::user()->wish_list)) {
+            $wish_list = Auth::user()->wish_list()->limit(5)->get();
+        }
+        $movie["custom_rating"] = $movie["rating"] * 5 / 10;
+        $movie["star_count"] = (int) $movie["custom_rating"];
+        return view('movies.index', [
+            "movie" => $movie,
+            "related_movies" => Movie::where("category_id", $movie->category_id)->limit(10)->get(),
+            "wish_list" => $wish_list,
+        ]);
     }
 
     /**

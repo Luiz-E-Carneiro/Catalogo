@@ -25,7 +25,6 @@ header {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-image: url(https://static1.cbrimages.com/wordpress/wp-content/uploads/2019/04/Avengers-Endgame-banner-poster.jpg);
     color: #f0f0f0;
 }
 #movie_description {
@@ -223,7 +222,6 @@ header {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    background-image: url(https://static.wikia.nocookie.net/marvelcinematicuniverse/images/9/91/Endgame_Poster_2.jpg);
     border-radius: 5px;
     padding: 10px;
 }
