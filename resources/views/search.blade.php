@@ -8,7 +8,7 @@
         <h1>Results for you search</h1>
         <p>It is never to late to find a new work of art</p>
     </div>
-    <form action="" method="get" id="main_search">
+    <form action="{{route("movie.search")}}" method="get" id="main_search">
         <label for="search">
             <i class="fa-solid fa-magnifying-glass"></i>
         </label>

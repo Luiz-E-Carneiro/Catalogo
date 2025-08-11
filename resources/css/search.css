@@ -9,6 +9,7 @@ main {
 }
 #all_movies {
     margin: 0;
+    width: 1200px;
 }
 #page_title {
     width: 1200px;

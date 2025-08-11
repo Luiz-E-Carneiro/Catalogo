@@ -44,7 +44,7 @@
         <section class="post_section">
             <div class="section_header">
                 <h4>In your Wish List</h4>
-                <a href="">
+                <a href="{{route("user.index", Auth::user()->id)}}">
                     <p>See More</p>
                     <i class="fa-solid fa-angle-right"></i>
                 </a>

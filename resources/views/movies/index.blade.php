@@ -8,7 +8,7 @@
         <div id="movie_description">
             <div id="movie_title">{{$movie->title}}</div>
             <div id="movie_data">
-                <div id="movie_category">{{$movie->category->name}}</div>
+                <a href="{{route("movie.search", ["category" => $movie->category->id])}}" id="movie_category">{{$movie->category->name}}</a>
                 <div id="movie_rate">
                     <p>{{$movie->rating}}/10</p>
                     <div>
@@ -79,7 +79,7 @@
         <section class="post_section">
             <div class="section_header">
                 <h4>In your Wish List</h4>
-                <a href="">
+                <a href="{{route("user.index", Auth::user()->id)}}">
                     <p>See More</p>
                     <i class="fa-solid fa-angle-right"></i>
                 </a>
