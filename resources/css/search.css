@@ -1,0 +1,312 @@
+main {
+    margin-top: 100px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-flow: column;
+    gap: 20px 0px;
+}
+.post_section {
+    width: 1200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+    gap: 10px 0px;
+}
+.section_header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+.post_section h4 {
+    font-size: 1.4em;
+    color: #f0f0f0;
+}
+.section_header a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    gap: 0px 10px;
+    border-radius: 10px;
+}
+.section_header a:hover {
+    background-color: #232323;
+}
+.section_movies {
+    width: 100%;
+    height: 425px;
+    flex-grow: 1;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 100%;
+    gap: 10px;
+}
+.movie {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-flow: column;
+    border-radius: 10px;
+    transition: all 0.25s ease;
+    padding: 5px;
+}
+.movie:hover button {
+    opacity: 1;
+}
+.movie:hover {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    background-color: #232323;
+}
+.movie_cover {
+    width: 100%;
+    height: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-flow: column;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 5px;
+    padding: 10px;
+}
+.movie_desc {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+    padding: 0px 7.5px;
+}
+.movie_rate {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.9em;
+    gap: 0px 5px;
+}
+.movie_cover button {
+    width: 35px;
+    height: 35px;
+    opacity: 0;
+    color: #f0f0f0;
+    border: 2px solid #f0f0f0;
+    background-color: transparent;
+    border-radius: 100%;
+    backdrop-filter: blur(8px);
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+.movie_desc h5 {
+    font-size: 0.85em;
+}
+.movie_desc a:first-child {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0px;
+}
+.movie_desc a:last-child {
+    font-size: 0.8em;
+    align-self: flex-start;
+}
+#all_movies {
+}
+#all_movies .section_movies {
+    height: auto;
+    grid-template-rows: auto;
+}
+#all_movies .movie {
+    height: 425px;
+}
+#page_title {
+    width: 1200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+    gap: 5px 0px;
+    color: #f0f0f0;
+}
+#page_title h1 {
+    font-size: 2.5em;
+}
+#page_title p {
+    font-size: 1.1em;
+}
+#main_search {
+    margin: 40px 0px 30px 0px;
+    width: 1200px;
+    height: 50px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 10px;
+    transition: all 0.25s ease;
+    background-color: #464646;
+}
+#main_search>label {
+    padding: 0px 15px;
+    color: #dadada;
+}
+#main_search input {
+    width: 75%;
+    height: 100%;
+    border: none;
+    outline: none;
+    color: #f0f0f0;
+    background-color: transparent;
+}
+#main_search:has(input:focus) {
+    background-color: #4d4d4d;
+}
+#main_search>div {
+    flex-grow: 1;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 100%;
+    padding: 5px;
+    gap: 0px 7.5px;
+}
+#main_search button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0px 10px;
+    border: 1.5px solid transparent;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+#search_button {
+    color: #f0f0f0;
+    background-color: #006d77;
+}
+#search_button:hover, #submit_button:hover {
+    background-color: #008c99;
+}
+#filter_button {
+    color: #f0f0f0;
+    border-color: #cacaca !important;
+    background-color: transparent;
+    opacity: 0.8;
+}
+#filter_button:hover, #cancel_button:hover {
+    opacity: 1;
+}
+#filter_button i {
+    font-size: 1.2em;
+}
+#main_search button p {
+    font-size: 1.05em;
+    font-weight: 500;
+}
+#filter_window {
+    position: fixed;
+    width: 350px;
+    opacity: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+    gap: 10px 0px;
+    color: #f0f0f0;
+    background-color: #232323;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+@keyframes show {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+@keyframes unshow {
+    0% {opacity: 1;}
+    100% {opacity: 0;}
+}
+#filter_window>* {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#filter_header {
+    height: 45px;
+    justify-content: space-between;
+    background-color: #464646;
+    padding: 0px 15px 0px 20px;
+}
+#filter_header h2 {
+    font-size: 1em;
+    font-weight: 500;
+}
+#filter_header button {
+    padding: 7.5px;
+    font-size: 0.9em;
+    border-radius: 5px;
+    border: none;
+    color: #dadada;
+    background-color: transparent;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+#filter_header>button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+#filter_body {
+    padding: 10px 20px;
+    flex-flow: column;
+    gap: 20px 0px;
+}
+.filter_option {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-flow: column;
+    gap: 5px 0px;
+}
+.filter_option h3 {
+    font-size: 0.95em;
+    font-weight: 450;
+    color: #cacaca;
+}
+#filter_window select {
+    width: 80%;
+    padding: 7.5px 10px;
+    border: none;
+    border-radius: 5px;
+    color: #f0f0f0;
+    font-weight: bold;
+    background-color: #4d4d4d;
+}
+#filter_buttons {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 10px 20px;
+    gap: 0px 10px;
+}
+#filter_buttons div {
+    padding: 5px 20px;
+    font-size: 0.9em;
+    font-weight: 500;
+    border-radius: 5px;
+    border: 1.5px solid transparent;
+    transition: all 0.25s ease;
+    cursor: pointer;
+}
+#cancel_button {
+    border-color: #f0f0f0 !important;
+    opacity: 0.8;
+}
+#submit_button {
+    background-color: #006d77;
+}

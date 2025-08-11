@@ -4,9 +4,6 @@ let search_button = document.getElementById("search_button")
 let search_input = document.getElementById("search_input")
 let profile_button_data = profile_button.getBoundingClientRect()
 let search_button_data = search_button.getBoundingClientRect()
-console.log(search_input.children[0].getBoundingClientRect());
-
-
 profile_dropdown.style.top = profile_button_data.top + profile_button_data.height + 10 + "px"
 profile_dropdown.style.left = profile_button_data.left - profile_dropdown.getBoundingClientRect().width + profile_button_data.width + "px"
 search_input.style.top = search_button_data.top + "px"

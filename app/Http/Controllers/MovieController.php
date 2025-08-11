@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Movie;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreMovieRequest;
 use App\Http\Requests\UpdateMovieRequest;
@@ -17,6 +19,60 @@ class MovieController extends Controller
     public function index() {
         $movies = Movie::orderBy("created_at", "desc");
         return view('movie.index', []);
+    }
+    public function search(Request $request) {
+        $movies = Movie::query();
+        $search_text = [
+            "title",
+            "synopsis",
+            "publisher",
+        ];
+        $search_term = "%".$request["text"]."%";
+        if ($request["search_text"] != 0) {
+            $movies->whereRaw("LOWER(".$search_text[$request["search_text"]-1].") like ?", $search_term);
+        } else {
+            $movies->where(function ($query) use ($search_text, $search_term) {
+                foreach ($search_text as $field) {
+                    $query->orWhereRaw("LOWER(".$field.") like ?", [$search_term]);
+                }
+            });
+        }
+        if ($request["category"] != 0) {
+            $movies->where("category_id", $request["category"]);
+        }
+        if ($request["order_by"] != 0) {
+            $order_option = $request["order_by"];
+            if ($order_option == 1) {
+                $movies->orderByDesc("year");
+            } else if ($order_option == 2) {
+                $movies->orderByDesc("rating");
+            } else {
+                $movies->select('movies.*', DB::raw('COUNT(favorites.id) as wishlist_count'))
+                    ->leftJoin('favorites', 'movies.id', '=', 'favorites.movie_id')
+                    ->groupBy([
+                        "movies.id",
+                        "movies.title",
+                        "movies.synopsis",
+                        "movies.publisher",
+                        "movies.year",
+                        "movies.rating",
+                        "movies.link",
+                        "movies.cover",
+                        "movies.banner",
+                        "movies.category_id",
+                        "movies.created_at",
+                        "movies.updated_at",
+                    ])
+                    ->orderByDesc('wishlist_count');
+            }
+        }
+        $movies = $movies->get();
+        return view("search", [
+            "movies" => $movies,
+            "text" => $request["text"],
+            "filter" => [$request["search_text"], $request["category"], $request["order_by"]],
+            "categories" => Category::all()->toArray(),
+        ]);
     }
 
     /**
@@ -105,8 +161,7 @@ class MovieController extends Controller
         return redirect('movie.index')->with('success', 'Filme deletado com sucesso!');
     }
 
-    public function filtered(Request $request)
-    {
+    public function filtered(Request $request) {
         $query = Movie::with('category');
 
         $filterApplied = false;

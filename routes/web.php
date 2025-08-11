@@ -16,6 +16,7 @@ Route::get("/", [GeneralController::class, "index"])->name("index");
 Route::prefix('movie')->group(function () {
     Route::get('/filtered', [MovieController::class, 'filtered'])->name('movie.filtered');
     Route::get('/popular', [MovieController::class, 'popular'])->name('movie.popular');
+    Route::get('/search', [MovieController::class, 'search'])->name('movie.search');
 
     Route::get('/', [MovieController::class, 'index'])->name('movie.index');
     Route::get('/{movie}', [MovieController::class, 'show'])->name('movie.show');

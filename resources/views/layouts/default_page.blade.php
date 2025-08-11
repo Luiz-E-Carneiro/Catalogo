@@ -63,8 +63,8 @@
         </a>
         @endif
     </div>
-    <form id="search_input" method="get" action="movie/filtered" class="closed">
-        <input type="text" name="title">
+    <form id="search_input" method="get" action="{{route("movie.search")}}" class="closed">
+        <input type="text" name="text" value="{{$text ?? ""}}">
         <button type="submit" id="submit_search"><i class="fa-solid fa-magnifying-glass"></i></button>
     </form>
     @yield('content')

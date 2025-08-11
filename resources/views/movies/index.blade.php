@@ -71,36 +71,38 @@
             @endforeach
         </div>
     </section>
-    <section class="post_section">
-        <div class="section_header">
-            <h4>In your Wish List</h4>
-            <a href="">
-                <p>See More</p>
-                <i class="fa-solid fa-angle-right"></i>
-            </a>
-        </div>
-        <div class="section_movies">
-            @foreach ($wish_list as $movie)
-            <div class="movie">
-                <a href="{{route("movie.show", $movie->movie->id)}}" style="background-image: url({{asset("storage/")."/".$movie->movie->cover}});" class="movie_cover">
-                    <button id="wish_list">
-                        <i class="fa-regular fa-bookmark"></i>
-                    </button>
-                    <div class="movie_rate">
-                        <p>{{$movie->movie->rating}}/10</p>
-                        <i class="fa-solid fa-star"></i>
-                    </div>
+    @if (!empty($wish_list))
+        <section class="post_section">
+            <div class="section_header">
+                <h4>In your Wish List</h4>
+                <a href="">
+                    <p>See More</p>
+                    <i class="fa-solid fa-angle-right"></i>
                 </a>
-                <div class="movie_desc">
-                    <a href="">
-                        <h5>{{$movie->movie->title}}</h5>
-                    </a>
-                    <a href="">{{$movie->movie->category->name}}</a>
-                </div>
             </div>
-            @endforeach
-        </div>
-    </section>
+            <div class="section_movies">
+                @foreach ($wish_list as $movie)
+                <div class="movie">
+                    <a href="{{route("movie.show", $movie->movie->id)}}" style="background-image: url({{asset("storage/")."/".$movie->movie->cover}});" class="movie_cover">
+                        <button id="wish_list">
+                            <i class="fa-regular fa-bookmark"></i>
+                        </button>
+                        <div class="movie_rate">
+                            <p>{{$movie->movie->rating}}/10</p>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                    </a>
+                    <div class="movie_desc">
+                        <a href="">
+                            <h5>{{$movie->movie->title}}</h5>
+                        </a>
+                        <a href="">{{$movie->movie->category->name}}</a>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+        </section>
+    @endif
 </main>
 <section id="movie_trailer" class="closed_movie">
     <!--https://www.youtube.com/embed/-IJuKT1mHO8-->
