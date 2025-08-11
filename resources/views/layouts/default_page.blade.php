@@ -33,16 +33,15 @@
                 <p>Add a movie</p>
             </a>
         </nav>
-        <div id="right_header">
+        <div id="right_header"> 
             <button type="button" id="search_button"><i class="fa-solid fa-magnifying-glass"></i></button>
             <button type="button" id="dark_mode"><i class="fa-solid fa-moon"></i></button>
-            <div id="profile_button" style="background-image: url({{asset(Auth::check() ? Auth::user()->profile : "system/default_profile.svg")}})"></div>
-            <!-- <div id="profile_button" class="profile-bg" data-image="{{ asset(Auth::check() ? (Auth::user()->profile ?? 'system/default_profile.svg') : 'system/default_profile.svg') }}"></div> -->
+            <div id="profile_button" style="background-image: url({{asset("storage/". (Auth::check() ? Auth::user()->profile : "users/default_profile.svg"))}})"></div>
         </div>
     </header>
     <div id="profile_dropdown" class="closed">
         @if (Auth::check())
-        <a href="">
+        <a href="{{route("user.index", Auth::user()->id)}}">
             <i class="fa-solid fa-user"></i>
             <p>Your Profile</p>
         </a>

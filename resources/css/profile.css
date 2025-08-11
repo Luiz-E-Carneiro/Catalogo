@@ -1,0 +1,140 @@
+@import url('movie_card.css');
+#profile_header {
+    position: relative;
+    width: 1200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+}
+#profile_banner {
+    z-index: 0;
+    position: absolute;
+    width: 100%;
+    height: 300px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 10px;
+    background-image: url(../../public/storage/users/default_banner.jpg);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+#profile_data {
+    z-index: 1;
+    margin-top: 270px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    color: #f0f0f0;
+    padding: 0px 10px;
+}
+#profile_data>div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0px 15px;
+}
+#profile_data>div:first-child {
+    justify-content: flex-start;
+}
+#profile_data>div:last-child {
+    justify-content: flex-end;
+}
+#profile_photo {
+    width: 120px;
+    height: 120px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 100%;
+    border: 3px solid #111111;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+#profile_fields {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-flow: column;
+    gap: 5px 0px;
+    padding-top: 35px;
+}
+#profile_name {
+    font-size: 1.5em;
+    font-weight: 500;
+}
+#profile_date {
+    margin-top: 20px;
+    font-size: 0.9em;
+    font-weight: 500;
+}
+#profile_settings {
+    padding: 7.5px;
+    font-size: 1em;
+    border-radius: 5px;
+    border: none;
+    color: #dadada;
+    background-color: transparent;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+#profile_settings:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+#settings_window {
+    position: fixed;
+    z-index: 2;
+    width: 175px;
+    opacity: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+    border-radius: 5px;
+    background-color: #26262c;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    padding: 5px 0px;
+    transition: all 0.25s ease;
+}
+#settings_window>* {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    padding: 10px 20px;
+    gap: 0px 10px;
+    color: #dadada;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+#settings_window i {
+    font-size: 1em;
+}
+#settings_window p {
+    font-size: 0.85em !important;
+    font-weight: 400;
+}
+#settings_window>*:first-child:hover {
+    color: #90e0ef;
+    background-color: #464646;
+}
+#settings_window>*:last-child:hover {
+    color: #ff7e7e;
+    background-color: #464646;
+}
+#settings_window>*:active {
+    background-color: #26262c;
+}
+@keyframes show {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+@keyframes unshow {
+    0% {opacity: 1;}
+    100% {opacity: 0;}
+}
+.section_header {
+    justify-content: flex-start;
+    gap: 0px 10px;
+}

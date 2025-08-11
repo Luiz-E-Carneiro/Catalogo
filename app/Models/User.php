@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -54,5 +55,8 @@ class User extends Authenticatable
     }
     public function wish_list(): HasMany {
         return $this->hasMany(Favorite::class);
+    }
+    public function create_date() {
+        return Carbon::createFromDate($this->created_at)->format("d M Y");
     }
 }

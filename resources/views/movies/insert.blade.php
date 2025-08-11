@@ -1,0 +1,11 @@
+@extends('layouts.default_page')
+@section('head')
+    @vite(['resources/css/movie.css'])
+@endsection
+@section('content')
+<main>
+</main>
+@endsection
+@section('js')
+    @vite(['resources/js/movie.js'])
+@endsection

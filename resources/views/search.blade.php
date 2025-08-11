@@ -13,9 +13,9 @@
             <i class="fa-solid fa-magnifying-glass"></i>
         </label>
         <input type="text" id="search" name="text" value="{{$text ?? ""}}" placeholder="Search for something...">
-        <input type="hidden" name="search_text" value="0">
-        <input type="hidden" name="order_by" value="0">
-        <input type="hidden" name="category" value="0">
+        <input type="hidden" name="search_text" value="{{$filter[0] ?? 0}}">
+        <input type="hidden" name="order_by" value="{{$filter[2] ?? 0}}">
+        <input type="hidden" name="category" value="{{$filter[1] ?? 0}}">
         <div>
             <button type="button" id="filter_button">
                 <i class="fa-solid fa-sliders"></i>

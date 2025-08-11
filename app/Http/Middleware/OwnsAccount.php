@@ -14,14 +14,14 @@ class OwnsAccount
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next): Response
-    {
-        $routeId = $request->route('user') ?? $request->route('id');
-
-        if ((int) Auth::id() == (int) $routeId OR Auth::user()->role == 'admin') {
+    public function handle(Request $request, Closure $next): Response {
+        if (!Auth::check()) {
+            return redirect()->route('index')->with('warning', 'Ação não permitida');
+        }
+        $user = $request->route('user');
+        if (Auth::user()->id == $user->id || Auth::user()->role == 'admin') {
             return $next($request);
         }
-        
-        return redirect()->route('movie.index')->with('warning', 'Ação não permitida.');
+        return redirect()->route('index')->with('warning', 'Ação não permitida');
     }
 }

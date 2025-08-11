@@ -1,0 +1,124 @@
+.post_section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+    gap: 10px 0px;
+}
+.section_header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+.post_section h4 {
+    font-size: 1.4em;
+    color: #f0f0f0;
+}
+.section_header a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    gap: 0px 10px;
+    border-radius: 10px;
+}
+.section_header a:hover {
+    background-color: #232323;
+}
+.section_movies {
+    width: 100%;
+    height: 425px;
+    flex-grow: 1;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 100%;
+    gap: 10px;
+}
+.movie {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-flow: column;
+    border-radius: 10px;
+    transition: all 0.25s ease;
+    padding: 5px;
+}
+.movie:hover button {
+    opacity: 1;
+}
+.movie:hover {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    background-color: #232323;
+}
+.movie_cover {
+    width: 100%;
+    height: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-flow: column;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 5px;
+    overflow: hidden;
+}
+.movie_desc {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+    padding: 0px 7.5px;
+}
+.movie_rate {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.9em;
+    padding: 7.5px 10px;
+    gap: 0px 5px;
+    border-top-left-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(8px);
+}
+.movie_cover button {
+    margin-top: 5px;
+    margin-right: 5px;
+    width: 35px;
+    height: 35px;
+    opacity: 0;
+    color: #f0f0f0;
+    border: 2px solid #f0f0f0;
+    background-color: transparent;
+    border-radius: 100%;
+    backdrop-filter: blur(8px);
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+.movie_desc h5 {
+    font-size: 0.85em;
+}
+.movie_desc a:first-child {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0px;
+}
+.movie_desc a:last-child {
+    font-size: 0.8em;
+    align-self: flex-start;
+}
+#all_movies {
+    margin-top: 100px;
+}
+#all_movies .section_movies {
+    height: auto;
+    grid-template-rows: auto;
+}
+#all_movies .movie {
+    height: 425px;
+}

@@ -12,16 +12,13 @@ use Illuminate\Validation\Rules\Password;
 
 class UserController extends Controller
 {
-    public function login()
-    {
+    public function login() {
         return view("users.login");
     }
-    public function logon()
-    {
+    public function logon() {
         return view("users.logon");
     }
-    public function auth_login(UserRequest $request)
-    {
+    public function auth_login(UserRequest $request) {
         $data = $request->validated();
         $user = User::where("email", "=", $data["email"])->first();
         if (empty($user) || !Hash::check($data["password"], $user["password"])) {
@@ -37,8 +34,7 @@ class UserController extends Controller
         }
     }
 
-    public function auth_logon(UserRequest $request)
-    {
+    public function auth_logon(UserRequest $request) {
         $data = $request->validated();
 
         $data["password"] = Hash::make($data["password"]);
@@ -48,46 +44,42 @@ class UserController extends Controller
         return redirect()->route("index")->with('Success', 'Conta criada com sucesso');
     }
 
-    public function logout()
-    {
+    public function logout() {
         Auth::logout();
         return redirect()->route("index");
     }
 
-    public function index()
-    {
-        //
+    public function index(User $user) {
+        return view("users.profile", [
+            "user" => $user,
+        ]);
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
+    public function create() {
         //
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
+    public function store(Request $request) {
         //
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
-    {
+    public function show(string $id) {
         //
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
-    {
+    public function edit(string $id) {
         $user = Auth::user();
         return view('user.edit', compact('user'));
     }
@@ -96,8 +88,7 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UserRequest $request, string $id)
-    {
+    public function update(UserRequest $request, string $id) {
         $data = $request->validated();
 
         $user = User::findOrFail($id);

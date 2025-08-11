@@ -6,8 +6,8 @@
 <main>
     <section id="main_movie" style="background-image: url({{asset("storage/banners/shrek.jpg")}})">
         <div id="movie_description">
-            <a href="" id="movie_title">{{$popular_movies[0]->title}}</a>
-            <a href="" id="movie_data">
+            <a href="{{route("movie.show", $popular_movies[0]->id)}}" id="movie_title">{{$popular_movies[0]->title}}</a>
+            <a href="{{route("movie.show", $popular_movies[0]->id)}}" id="movie_data">
                 <div id="movie_category">{{$popular_movies[0]->category->name}}</div>
                 <p>|</p>
                 <div id="movie_date">{{$popular_movies[0]->year}}</div>
@@ -27,7 +27,7 @@
                     </div>
                 </div>
             </a>
-            <a href="" id="synopsis">{{$popular_movies[0]->synopsis}}</a>
+            <a href="{{route("movie.show", $popular_movies[0]->id)}}" id="synopsis">{{$popular_movies[0]->synopsis}}</a>
             <div id="movie_buttons">
                 <a href="" id="watch">
                     <i class="fa-solid fa-play"></i>

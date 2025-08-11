@@ -104,6 +104,16 @@
         </section>
     @endif
 </main>
+<div id="settings_window">
+    <a href="">
+        <i class="fa-solid fa-pen-to-square"></i>
+        <p>Edit</p>
+    </a>
+    <a href="">
+        <i class="fa-solid fa-trash"></i>
+        <p>Delete</p>
+    </a>
+</div>
 <section id="movie_trailer" class="closed_movie">
     <!--https://www.youtube.com/embed/-IJuKT1mHO8-->
     <iframe id="trailer" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
