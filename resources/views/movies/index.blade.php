@@ -38,10 +38,12 @@
                     <i class="fa-solid fa-bookmark"></i>
                     <p>@if ($movie->is_wished()) Saved on Wish List @else Save in Wish List @endif</p>
                 </div>
-                <div id="settings">
-                    <i class="fa-solid fa-gear"></i>
-                    <p>Settings</p>
-                </div>
+                @if (Auth::check() && Auth::user()->role == "admin")
+                    <div id="settings">
+                        <i class="fa-solid fa-gear"></i>
+                        <p>Settings</p>
+                    </div>
+                @endif
             </div>
         </div>
     </section>
@@ -112,16 +114,18 @@
         </section>
     @endif
 </main>
-<div id="settings_window">
-    <a href="">
-        <i class="fa-solid fa-pen-to-square"></i>
-        <p>Edit</p>
-    </a>
-    <a href="">
-        <i class="fa-solid fa-trash"></i>
-        <p>Delete</p>
-    </a>
-</div>
+@if (Auth::check() && Auth::user()->role == "admin")
+    <div id="settings_window">
+        <a href="">
+            <i class="fa-solid fa-pen-to-square"></i>
+            <p>Edit</p>
+        </a>
+        <a href="">
+            <i class="fa-solid fa-trash"></i>
+            <p>Delete</p>
+        </a>
+    </div>
+@endif
 <section id="movie_trailer" class="closed_movie">
     <!--https://www.youtube.com/embed/-IJuKT1mHO8-->
     <iframe id="trailer" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
