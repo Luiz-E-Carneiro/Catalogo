@@ -28,7 +28,9 @@ Route::prefix('/movie')->group(function () {
         Route::delete('/{movie}', [MovieController::class, 'destroy'])->name('movie.destroy');
     });
 });
-
+Route::prefix("/favorite")->group(function() {
+    Route::get("/save/{movie_id}", [FavoriteController::class, "store"])->name("favorite.save");
+});
 
 Route::middleware('owns.account')->group(function () {
     Route::get('/user/{user}', [UserController::class, 'index'])->name('user.index');

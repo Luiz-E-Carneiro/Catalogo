@@ -34,10 +34,10 @@
                     <i class="fa-solid fa-play"></i>
                     <p>Watch Trailer</p>
                 </div>
-                <a href="" id="save">
+                <div id="save" class="save_button @if ($movie->is_wished()) saved @endif" data-movie_id="{{$movie->id}}">
                     <i class="fa-solid fa-bookmark"></i>
-                    <p>Save in Wish List</p>
-                </a>
+                    <p>@if ($movie->is_wished()) Saved on Wish List @else Save in Wish List @endif</p>
+                </div>
                 <div id="settings">
                     <i class="fa-solid fa-gear"></i>
                     <p>Settings</p>
@@ -53,8 +53,12 @@
             @foreach ($related_movies as $movie)
             <div class="movie">
                 <a href="{{route("movie.show", $movie->id)}}" style="background-image: url({{asset("storage/")."/".$movie->cover}});" class="movie_cover">
-                    <button id="wish_list">
+                    <button id="wish_list" class="save_button @if ($movie->is_wished()) saved @endif" data-movie_id="{{$movie->id}}">
+                        @if ($movie->is_wished())
+                        <i class="fa-solid fa-bookmark"></i>
+                        @else
                         <i class="fa-regular fa-bookmark"></i>
+                        @endif
                     </button>
                     <div class="movie_rate">
                         <p>{{$movie->rating}}/10</p>
@@ -84,9 +88,13 @@
                 @foreach ($wish_list as $movie)
                 <div class="movie">
                     <a href="{{route("movie.show", $movie->movie->id)}}" style="background-image: url({{asset("storage/")."/".$movie->movie->cover}});" class="movie_cover">
-                        <button id="wish_list">
-                            <i class="fa-regular fa-bookmark"></i>
-                        </button>
+                        <button id="wish_list" class="save_button @if ($movie->movie->is_wished()) saved @endif" data-movie_id="{{$movie->movie->id}}">
+                        @if ($movie->movie->is_wished())
+                        <i class="fa-solid fa-bookmark"></i>
+                        @else
+                        <i class="fa-regular fa-bookmark"></i>
+                        @endif
+                    </button>
                         <div class="movie_rate">
                             <p>{{$movie->movie->rating}}/10</p>
                             <i class="fa-solid fa-star"></i>
@@ -120,5 +128,6 @@
 </section>
 @endsection
 @section('js')
+    @vite(['resources/js/wish_list.js'])
     @vite(['resources/js/movie.js'])
 @endsection

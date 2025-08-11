@@ -85,7 +85,7 @@ section {
     align-items: center;
     gap: 0px 20px;
 }
-#movie_buttons a {
+#movie_buttons>* {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -93,6 +93,7 @@ section {
     padding: 10px 20px;
     border-radius: 20px;
     font-weight: 500;
+    cursor: pointer;
     border: 1.5px solid transparent;
     transition: all 0.25s ease;
 }

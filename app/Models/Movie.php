@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Movie extends Model
 {
@@ -35,5 +36,12 @@ class Movie extends Model
     }
     public function wish_list(): HasMany {
         return $this->hasMany(Favorite::class);
+    }
+    public function is_wished() {
+        $movie = false;
+        if (Auth::check()) {
+            $movie = Favorite::where("movie_id", $this->id)->where("user_id", Auth::user()->id)->exists();
+        }
+        return Auth::check() && $movie;
     }
 }

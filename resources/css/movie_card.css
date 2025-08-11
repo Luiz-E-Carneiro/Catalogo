@@ -122,3 +122,7 @@
 #all_movies .movie {
     height: 425px;
 }
+.saved {
+    color: #111111 !important;
+    background-color: #f0f0f0 !important;
+}

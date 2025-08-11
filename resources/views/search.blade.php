@@ -29,8 +29,12 @@
             @foreach ($movies as $movie)
             <div class="movie">
                 <a href="{{route("movie.show", $movie->id)}}" style="background-image: url({{asset("storage/")."/".$movie->cover}});" class="movie_cover">
-                    <button id="wish_list">
+                    <button id="wish_list" class="save_button @if ($movie->is_wished()) saved @endif" data-movie_id="{{$movie->id}}">
+                        @if ($movie->is_wished())
+                        <i class="fa-solid fa-bookmark"></i>
+                        @else
                         <i class="fa-regular fa-bookmark"></i>
+                        @endif
                     </button>
                     <div class="movie_rate">
                         <p>{{$movie->rating}}/10</p>
@@ -89,5 +93,6 @@
 </div>
 @endsection
 @section('js')
+    @vite(['resources/js/wish_list.js'])
     @vite(['resources/js/search.js'])
 @endsection

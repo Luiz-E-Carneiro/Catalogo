@@ -102,6 +102,7 @@ header {
     padding: 10px 20px;
     border-radius: 20px;
     font-weight: 500;
+    cursor: pointer;
     border: 1.5px solid transparent;
     transition: all 0.25s ease;
 }
