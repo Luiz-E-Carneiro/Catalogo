@@ -28,7 +28,7 @@
                 <i class="fa-solid fa-fire"></i>
                 <p>Popular</p>
             </a>
-            @if (Auth::check() && Auth::user()->role == "adimin")
+            @if (Auth::check() && Auth::user()->role == "admin")
                 <a href="{{route("movie.create")}}">
                     <i class="fa-solid fa-clapperboard"></i>
                     <p>Add a movie</p>

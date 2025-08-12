@@ -30,10 +30,10 @@
             </div>
             <div id="synopsis">{{$movie->synopsis}}</div>
             <div id="movie_buttons">
-                <div id="watch">
+                <a href="{{$movie->link}}" id="watch" target="_blank">
                     <i class="fa-solid fa-play"></i>
                     <p>Watch Trailer</p>
-                </div>
+                </a>
                 <div id="save" class="save_button @if ($movie->is_wished()) saved @endif" data-movie_id="{{$movie->id}}">
                     <i class="fa-solid fa-bookmark"></i>
                     <p>@if ($movie->is_wished()) Saved on Wish List @else Save in Wish List @endif</p>
@@ -126,10 +126,6 @@
         </section>
     @endif
 </main>
-<section id="movie_trailer" class="closed_movie">
-    <!--https://www.youtube.com/embed/-IJuKT1mHO8-->
-    <iframe id="trailer" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</section>
 @endsection
 @section('js')
     @vite(['resources/js/wish_list.js'])

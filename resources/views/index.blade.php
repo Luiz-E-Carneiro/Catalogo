@@ -29,7 +29,7 @@
             </a>
             <a href="{{route("movie.show", $popular_movies[0]->id)}}" id="synopsis">{{$popular_movies[0]->synopsis}}</a>
             <div id="movie_buttons">
-                <a href="" id="watch">
+                <a href="{{$popular_movies[0]->link}}" id="watch" target="_blank">
                     <i class="fa-solid fa-play"></i>
                     <p>Watch Trailer</p>
                 </a>
