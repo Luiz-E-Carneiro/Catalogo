@@ -79,7 +79,9 @@ class MovieController extends Controller
      * Show the form for creating a new resource.
      */
     public function create() {
-        return view('movie.create');
+        return view('movies.insert', [
+            "categories" => Category::all()->toArray(),
+        ]);
     }
 
     /**
@@ -100,10 +102,9 @@ class MovieController extends Controller
 
             $data['banner'] = $imagePath;
         }
-
-        Movie::create($data);
-
-        return redirect()->route('movie.index')->with('success', 'Filme criado com sucesso!');
+        $movie = Movie::create($data);
+        
+        return redirect()->route('movie.show', $movie->id)->with('success', 'Filme criado com sucesso!');
     }
 
     /**
@@ -118,7 +119,7 @@ class MovieController extends Controller
         $movie["star_count"] = (int) $movie["custom_rating"];
         return view('movies.index', [
             "movie" => $movie,
-            "related_movies" => Movie::where("category_id", $movie->category_id)->limit(10)->get(),
+            "related_movies" => Movie::where("category_id", $movie->category_id)->where("id", "!=", $movie->id)->limit(10)->get(),
             "wish_list" => $wish_list,
         ]);
     }
@@ -127,37 +128,43 @@ class MovieController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit(Movie $movie) {
-        return view('movie.edit');
+        return view('movies.edit', [
+            "categories" => Category::all()->toArray(),
+            "movie" => $movie,
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateMovieRequest $request, Movie $movie) {
+    public function update(UpdateMovieRequest $request) {
         $data = $request->validated();
+        $movie = Movie::find($request["id"]);
 
-        if ($request->hasFile('image')) {
-            $image = $request->file('image');
+        if ($request->hasFile('cover')) {
+            $image = $request->file('cover');
             $imagePath = $image->store('movies', 'public');
-
-            $data['image'] = $imagePath;
+            $data['cover'] = $imagePath;
+        } else {
+            $data['cover'] = $movie->cover;
         }
-
-        $movie = Movie::find($movie->id);
-
+        if ($request->hasFile('banner')) {
+            $image = $request->file('banner');
+            $imagePath = $image->store('movies', 'public');
+            $data['banner'] = $imagePath;
+        } else {
+            $data['banner'] = $movie->banner;
+        }
         $movie->update($data);
 
-        return redirect()->route('movie.index')->with('success', 'Filme alterado com sucesso!');
+        return redirect()->route('movie.show', $movie->id)->with('success', 'Filme alterado com sucesso!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(Movie $movie) {
-        $movie = Movie::findOrFail($movie->id);
-
         $movie->delete();
-
         return redirect('movie.index')->with('success', 'Filme deletado com sucesso!');
     }
 

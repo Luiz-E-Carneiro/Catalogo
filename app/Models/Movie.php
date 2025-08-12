@@ -16,15 +16,15 @@ class Movie extends Model
     use HasFactory, Notifiable;
 
     protected $fillable = [
-        "title", //
-        "synopsis", //
-        "publisher", //
-        "year", //
-        "rating", //
+        "title",
+        "synopsis",
+        "publisher",
+        "year",
+        "rating",
         "link",
         "cover",
         "banner",
-        "category_id", //
+        "category_id",
         //favorite
     ];
 

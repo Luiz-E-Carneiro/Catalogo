@@ -5,15 +5,17 @@
 @section('content')
 <main>
     <section id="page_title">
-        <h1>Insert a movie</h1>
-        <p>Fill the fields to create a new movie</p>
+        <h1>Edit a movie</h1>
+        <p>Update the fields to edit the movie</p>
     </section>
-    <form action="{{route("movie.store")}}" method="post" enctype="multipart/form-data">
+    <form action="{{route("movie.update")}}" method="POST" enctype="multipart/form-data">
         @csrf
+        @method("PUT")
+        <input type="hidden" name="id" value="{{$movie->id}}">
         <div class="input_group">
             <div class="input @error("title") error @enderror">
                 <label for="title">Title</label>
-                <input value="{{old("title")}}" type="text" name="title" id="title">
+                <input value="{{$movie->title}}" type="text" name="title" id="title">
                 @error("title")
                 <p>{{$message}}</p>
                 @else
@@ -22,7 +24,7 @@
             </div>
             <div class="input @error("publisher") error @enderror">
                 <label for="publisher">Publisher</label>
-                <input value="{{old("publisher")}}" type="text" name="publisher" id="publisher">
+                <input value="{{$movie->publisher}}" type="text" name="publisher" id="publisher">
                 @error("publisher")
                 <p>{{$message}}</p>
                 @else
@@ -33,7 +35,7 @@
         <div class="input_group">
             <div class="input @error("year") error @enderror">
                 <label for="year">Lauch year</label>
-                <input value="{{old("year")}}" type="number" min="0" step="1" name="year" id="year">
+                <input value="{{$movie->year}}" type="number" min="0" step="1" name="year" id="year">
                 @error("year")
                 <p>{{$message}}</p>
                 @else
@@ -42,7 +44,7 @@
             </div>
             <div class="input @error("rating") error @enderror">
                 <label for="rating">Rating (0.0 - 10.0)</label>
-                <input value="{{old("rating")}}" type="number" min="0" step="0.1" max="10" name="rating" id="rating">
+                <input value="{{$movie->rating}}" type="number" min="0" step="0.1" max="10" name="rating" id="rating">
                 @error("rating")
                 <p>{{$message}}</p>
                 @else
@@ -55,7 +57,7 @@
                 <label for="category_id">Category</label>
                 <select name="category_id" id="category_id">
                     @foreach ($categories as $category)
-                        <option value="{{$category["id"]}}" @if (old("category_id") == $category["id"])
+                        <option value="{{$category["id"]}}" @if ($movie->category->id == $category["id"])
                         selected
                         @endif>{{$category["name"]}}</option>
                     @endforeach
@@ -68,7 +70,7 @@
             </div>
             <div class="input @error("link") error @enderror">
                 <label for="link">Trailer Link</label>
-                <input value="{{old("link")}}" type="text" name="link" id="link">
+                <input value="{{$movie->link}}" type="text" name="link" id="link">
                 @error("link")
                 <p>{{$message}}</p>
                 @else
@@ -78,7 +80,7 @@
         </div>
         <div class="input @error("textare") error @enderror">
             <label for="synopsis">Description</label>
-            <textarea name="synopsis" id="synopsis">{{old("synopsis")}}</textarea>
+            <textarea name="synopsis" id="synopsis">{{$movie->synopsis}}</textarea>
             @error("textare")
             <p>Error me</p>
             @enderror

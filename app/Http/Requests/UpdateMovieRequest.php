@@ -11,7 +11,7 @@ class UpdateMovieRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -28,8 +28,8 @@ class UpdateMovieRequest extends FormRequest
             "year" => "required|numeric",
             "rating" => 'required',
             "link" => 'required',
-            "cover" => 'required|mimes:jpeg,png,jpg',
-            "banner" => 'required|mimes:jpeg,png,jpg',
+            "cover" => 'nullable|mimes:jpeg,png,jpg',
+            "banner" => 'nullable|mimes:jpeg,png,jpg',
             "category_id" => 'required',
         ];
     }

@@ -1,4 +1,8 @@
 @import url('movie_card.css');
+.section_header i {
+    color: #f0f0f0;
+    font-size: 1.1em;
+}
 #profile_header {
     position: relative;
     width: 1200px;
@@ -16,7 +20,6 @@
     background-repeat: no-repeat;
     background-size: cover;
     border-radius: 10px;
-    background-image: url(../../public/storage/users/default_banner.jpg);
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 #profile_data {

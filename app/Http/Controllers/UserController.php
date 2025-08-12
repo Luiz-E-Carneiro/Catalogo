@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Password;
 
@@ -79,28 +80,78 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id) {
-        $user = Auth::user();
-        return view('user.edit', compact('user'));
+    public function edit(User $user) {
+        if (Gate::denies("update", $user)) {
+            return redirect()->route("user.index", $user->id)->withErrors([
+                "Access Dedined" => "Você não possui permissão para acesar esta página"
+            ]);
+        }
+        return view('users.edit', compact('user'));
     }
 
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UserRequest $request, string $id) {
-        $data = $request->validated();
+    public function update(Request $request) {
+        $data = $request->validate([
+            "name" => ['required', "min:4", "max:25"],
+            "email" => ['required', 'email'],
+            "password" => ['required'],
+            "new_password" => ['nullable', Password::min(8)->letters()->numbers()],
+            "password_confirmation" => ['nullable', Password::min(8)->letters()->numbers()],
+            "profile" => ["nullable", "mimes:jpeg,png,jpg"],
+            "banner" => ["nullable", "mimes:jpeg,png,jpg"],
+        ]);
+        $user = User::find($request["id"]);
+        if (Gate::denies("update", $user)) {
+            return redirect()->route("user.index", $user->id)->withErrors([
+                "Access Dedined" => "Você não possui permissão para acesar esta página"
+            ]);
+        }
+        if (!Hash::check($data["password"], $user->password)) {
+            return redirect()->route("user.edit", $user->id)->withErrors(["password" => "Senha incorreta"]);
+        } else {
+            $data["password"] = Hash::make($data["password"]);
+        }
+        if (!empty($data["new_password"])) {
+            if ($data["new_password"] != $data["password_confirmation"]) {
+                return redirect()->route("user.edit", $user->id)->withErrors(["password_confirmation" => "Senhas não condizem"]);
+            } else {
+                $data["password"] = Hash::make($data["password_confirmation"]);
+            }
+        }
+        if ($request->hasFile('profile')) {
+            $image = $request->file('profile');
+            $imagePath = $image->store('users', 'public');
 
-        $user = User::findOrFail($id);
-        $user->update($data);
+            $data['profile'] = $imagePath;
+        } else {
+            $data['profile'] = $user->profile;
+        }
+        if ($request->hasFile('banner')) {
+            $image = $request->file('banner');
+            $imagePath = $image->store('users', 'public');
 
-        return redirect()->route('user.edit', $user->id)->with('success', 'Dados atualizados com sucesso!');
+            $data['banner'] = $imagePath;
+        } else {
+            $data['banner'] = $user->banner;
+        }
+        $user->update([
+            "name" => $data["name"],
+            "email" => $data["email"],
+            "password" => $data["password"],
+            "profile" => $data["profile"],
+            "banner" => $data["banner"],
+        ]);
+
+        return redirect()->route('user.index', $user->id)->with('success', 'Dados atualizados com sucesso!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id) {
+    public function destroy(User $user) {
         // Verificar se é admin ou não, dps exclui. Dependendo de quem for, faz o logout.
     }
 }

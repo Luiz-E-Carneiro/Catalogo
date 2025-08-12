@@ -47,6 +47,18 @@
             </div>
         </div>
     </section>
+    @if (Auth::check() && Auth::user()->role == "admin")
+        <div id="settings_window">
+            <a href="{{route("movie.edit", $movie->id)}}">
+                <i class="fa-solid fa-pen-to-square"></i>
+                <p>Edit</p>
+            </a>
+            <a href="">
+                <i class="fa-solid fa-trash"></i>
+                <p>Delete</p>
+            </a>
+        </div>
+    @endif
     <section id="all_movies" class="post_section">
         <div class="section_header">
             <h4>You might like</h4>
@@ -114,18 +126,6 @@
         </section>
     @endif
 </main>
-@if (Auth::check() && Auth::user()->role == "admin")
-    <div id="settings_window">
-        <a href="">
-            <i class="fa-solid fa-pen-to-square"></i>
-            <p>Edit</p>
-        </a>
-        <a href="">
-            <i class="fa-solid fa-trash"></i>
-            <p>Delete</p>
-        </a>
-    </div>
-@endif
 <section id="movie_trailer" class="closed_movie">
     <!--https://www.youtube.com/embed/-IJuKT1mHO8-->
     <iframe id="trailer" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

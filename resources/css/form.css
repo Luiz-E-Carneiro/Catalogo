@@ -1,0 +1,117 @@
+main {
+    margin-top: 100px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-flow: column;
+    gap: 20px 0px;
+}
+#page_title {
+    width: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-flow: column;
+    gap: 5px 0px;
+    padding: 10px 0px;
+    color: #f0f0f0;
+}
+#page_title h1 {
+    font-size: 2.2em;
+}
+#page_title p {
+    font-weight: 500;
+    font-size: 1.1em;
+}
+form {
+    width: 600px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-flow: column;
+    gap: 20px 0px;
+}
+form label {
+    font-size: 0.95em;
+    font-weight: bold;
+    color: #dadada;
+}
+form input, form select, form textarea {
+    width: 100%;
+    padding: 7.5px 15px;
+    border-radius: 5px;
+    outline: none;
+    border: 2px solid #464646;
+    background-color: #232323;
+    transition: all 0.25s ease;
+    color: #f0f0f0;
+    font-size: 0.8em;
+}
+form textarea {
+    height: 100px;
+}
+form textarea:focus {
+    height: 200px;
+}
+.input p {
+    font-size: 0.8em;
+    font-weight: 500;
+    color: #ff7e7e;
+    visibility: hidden;
+}
+.error p {
+    visibility: visible;
+}
+.error input {
+    border-color: #ff7e7e;
+}
+form input:hover, form select:hover, form textarea:hover, form input:focus, form select:focus, form textarea:focus {
+    background-color: #343434;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.input {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-flow: column;
+    gap: 5px 0px;
+    color: #f0f0f0;
+}
+.input_group {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0px 10px;
+}
+#form_buttons {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#form_buttons button {
+    padding: 7.5px 40px;
+    border: 1.5px solid transparent;
+    color: #f0f0f0;
+    font-weight: 500;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+#reset_button {
+    opacity: 0.8;
+    border-color: #f0f0f0 !important;
+    background-color: transparent;
+}
+#reset_button:hover {
+    opacity: 1;
+}
+#save_button {
+    background-color: #006d77;
+}
+#save_button:hover {
+    background-color: #5bc0be;
+}

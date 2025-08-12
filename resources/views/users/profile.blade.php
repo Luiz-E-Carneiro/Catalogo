@@ -5,7 +5,7 @@
 @section('content')
 <main>
     <section id="profile_header">
-        <div id="profile_banner"></div>
+        <div id="profile_banner" style="background-image: url({{asset("storage/".$user->banner)}})"></div>
         <div id="profile_data">
             <div>
                 <div id="profile_photo" style="background-image: url({{asset("storage/".$user->profile)}})"></div>
@@ -53,11 +53,11 @@
     </section>
 </main>
 <div id="settings_window">
-    <a href="">
+    <a href="{{route("user.edit", $user->id)}}">
         <i class="fa-solid fa-pen-to-square"></i>
         <p>Edit</p>
     </a>
-    <a href="">
+    <a href="{{route("user.delete", $user->id)}}">
         <i class="fa-solid fa-trash"></i>
         <p>Delete</p>
     </a>

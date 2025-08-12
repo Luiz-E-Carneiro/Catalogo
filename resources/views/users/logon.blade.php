@@ -76,7 +76,7 @@
             <p>© 2021-2025 blog.com, Inc. ou suas afiliadas</p>
         </footer>
     </div>
-    @vite(['resources/js/form.js'])
+    @vite(['resources/js/auth.js'])
 </body>
 
 </html>
