@@ -19,7 +19,8 @@ Administradores têm permissões adicionais para gerenciar o catálogo de filmes
 - **PHP**
 - **Laravel 12**
 - **MySQL**
-- **Blade Templates** (HTML + CSS)
+- **Javascript**
+- **Blade Templates** (HTML5 + CSS3)
 - **Composer** (gerenciador de dependências)
 - **Git/GitHub** para controle de versão
 
@@ -44,10 +45,9 @@ Administradores têm permissões adicionais para gerenciar o catálogo de filmes
 |--------|------|-----------|------------|
 | GET | `/` | Página inicial | - |
 | GET | `/movie/popular` | Lista de filmes populares | - |
-| GET | `/movie/filtered` | Lista filtrada de filmes | - |
+| GET | `/movie/search` | Lista filtrada de filmes | - |
 | GET | `/user/{id}` | Perfil do usuário | `owns.account` |
 | GET | `/movie/create` | Formulário de criação de filme | `admin` |
-| POST | `/favorite` | Adiciona filme aos favoritos | `auth` |
 
 ---
 
