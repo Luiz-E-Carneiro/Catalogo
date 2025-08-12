@@ -68,6 +68,15 @@
             <p></p>
             @enderror
         </div>
+        <div class="input @error("banner") error @enderror">
+            <label for="banner">Banner</label>
+            <input type="file" class="file_input" name="banner" id="banner">
+            @error("banner")
+            <p>{{$message}}</p>
+            @else
+            <p></p>
+            @enderror
+        </div>
         <div id="form_buttons">
             <button type="reset" id="reset_button">Reset</button>
             <button type="submit" id="save_button">Save</button>
