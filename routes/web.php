@@ -7,11 +7,6 @@ use App\Http\Controllers\UserController;
 use App\Http\Middleware\AdminOnly;
 use Illuminate\Support\Facades\Route;
 
-// Acho melhor para redirecionamento rápido e já ir na função... 
-// OU
-// ----> é apenas "/" ser para movies (acho q resolve e é o 'certo' mas n testei ainda)
-// Route::get('/', fn () => redirect()->route('movie.index')); 
-
 Route::get("/", [GeneralController::class, "index"])->name("index");
 
 Route::prefix('/movie')->group(function () {
