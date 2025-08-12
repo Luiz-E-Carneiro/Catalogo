@@ -51,6 +51,11 @@ class UserController extends Controller
     }
 
     public function index(User $user) {
+        if (Gate::denies("view", $user)) {
+            return redirect()->route("user.index", $user->id)->withErrors([
+                "Access Dedined" => "Você não possui permissão para acesar esta página"
+            ]);
+        }
         return view("users.profile", [
             "user" => $user,
         ]);

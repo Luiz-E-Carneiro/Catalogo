@@ -31,12 +31,12 @@ Route::prefix("/favorite")->group(function() {
     Route::get("/save/{movie_id}", [FavoriteController::class, "store"])->name("favorite.save");
 });
 
-Route::middleware('owns.account')->group(function () {
-    Route::get('/user/{user}', [UserController::class, 'index'])->name('user.index');
+Route::prefix("/user")->group(function() {
+    Route::get('/{user}', [UserController::class, 'index'])->name('user.index');
+    Route::get('/edit/{user}', [UserController::class, 'edit'])->name('user.edit');
+    Route::put('/update', [UserController::class, 'update'])->name('user.update');
+    Route::get('/delete/{user}', [UserController::class, 'destroy'])->name('user.delete');
 });
-Route::get('/user/edit/{user}', [UserController::class, 'edit'])->name('user.edit');
-Route::put('/user/update', [UserController::class, 'update'])->name('user.update');
-Route::get('/user/delete/{user}', [UserController::class, 'destroy'])->name('user.delete');
 
 Route::prefix("/auth")->group(function() {
     Route::post("/login", [UserController::class, "auth_login"])->name("auth.login");
