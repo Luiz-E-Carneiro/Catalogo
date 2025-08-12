@@ -167,38 +167,6 @@ class MovieController extends Controller
         $movie->delete();
         return redirect()->route("index")->with('success', 'Filme deletado com sucesso!');
     }
-
-    public function filtered(Request $request) {
-        $query = Movie::with('category');
-
-        $filterApplied = false;
-        
-        if($request->filled('title')) {
-            $query->where('title', 'LIKE', '%' . $request->input('title') . '%');
-            $filterApplied = true;
-        }
-        
-        if ($request->filled('category')) {
-            $query->where('category_id', $request->input('category'));
-            $filterApplied = true;
-        }
-        
-        if ($request->filled('year')) {
-            $query->where('year', $request->input('year'));
-            $filterApplied = true;
-        }
-
-        if(!$filterApplied){
-            return redirect()->route('movie.index')->with('warning', 'Nenhum filme encontrado com esse filtro, tente com outro...');
-        }
-
-        $movies = $query->get();
-        return view('movie.filtered', compact('movies'));
-    }
-
-    // Não sei se faz sentido adicionar, pois todos são criados no mesmo momento...
-    //public function recent_added(){}
-
     public function popular(){
         $query = Movie::with('category')->where('rating', '>=', 7);
 
