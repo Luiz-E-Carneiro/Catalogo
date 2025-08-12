@@ -24,7 +24,7 @@ Route::prefix('/movie')->group(function () {
         Route::post('/', [MovieController::class, 'store'])->name('movie.store');
         Route::get('/edit/{movie}', [MovieController::class, 'edit'])->name('movie.edit');
         Route::put('/update', [MovieController::class, 'update'])->name('movie.update');
-        Route::delete('delete/{movie}', [MovieController::class, 'destroy'])->name('movie.destroy');
+        Route::get('/delete/{movie}', [MovieController::class, 'destroy'])->name('movie.delete');
     });
 });
 Route::prefix("/favorite")->group(function() {
@@ -33,10 +33,10 @@ Route::prefix("/favorite")->group(function() {
 
 Route::middleware('owns.account')->group(function () {
     Route::get('/user/{user}', [UserController::class, 'index'])->name('user.index');
-    Route::get('/user/delete/{user}', [UserController::class, 'delete'])->name('user.delete');
 });
 Route::get('/user/edit/{user}', [UserController::class, 'edit'])->name('user.edit');
 Route::put('/user/update', [UserController::class, 'update'])->name('user.update');
+Route::get('/user/delete/{user}', [UserController::class, 'destroy'])->name('user.delete');
 
 Route::prefix("/auth")->group(function() {
     Route::post("/login", [UserController::class, "auth_login"])->name("auth.login");

@@ -165,7 +165,7 @@ class MovieController extends Controller
      */
     public function destroy(Movie $movie) {
         $movie->delete();
-        return redirect('movie.index')->with('success', 'Filme deletado com sucesso!');
+        return redirect()->route("index")->with('success', 'Filme deletado com sucesso!');
     }
 
     public function filtered(Request $request) {

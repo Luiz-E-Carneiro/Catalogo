@@ -40,7 +40,7 @@
             </div>
         </div>
     </section>
-    @if (!empty($wish_list))
+    @if (Auth::check() && !$wish_list->isEmpty())
         <section class="post_section">
             <div class="section_header">
                 <h4>In your Wish List</h4>

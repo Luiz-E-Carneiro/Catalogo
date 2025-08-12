@@ -28,10 +28,12 @@
                 <i class="fa-solid fa-fire"></i>
                 <p>Popular</p>
             </a>
-            <a href="{{route("movie.create")}}">
-                <i class="fa-solid fa-clapperboard"></i>
-                <p>Add a movie</p>
-            </a>
+            @if (Auth::check() && Auth::user()->role == "adimin")
+                <a href="{{route("movie.create")}}">
+                    <i class="fa-solid fa-clapperboard"></i>
+                    <p>Add a movie</p>
+                </a>
+            @endif
         </nav>
         <div id="right_header"> 
             <button type="button" id="search_button"><i class="fa-solid fa-magnifying-glass"></i></button>

@@ -53,7 +53,7 @@
                 <i class="fa-solid fa-pen-to-square"></i>
                 <p>Edit</p>
             </a>
-            <a href="">
+            <a href="{{route("movie.delete", $movie->id)}}">
                 <i class="fa-solid fa-trash"></i>
                 <p>Delete</p>
             </a>
@@ -89,7 +89,7 @@
             @endforeach
         </div>
     </section>
-    @if (!empty($wish_list))
+    @if (Auth::check() && !$wish_list->isEmpty())
         <section class="post_section">
             <div class="section_header">
                 <h4>In your Wish List</h4>

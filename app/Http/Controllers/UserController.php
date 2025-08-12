@@ -152,6 +152,15 @@ class UserController extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy(User $user) {
-        // Verificar se é admin ou não, dps exclui. Dependendo de quem for, faz o logout.
+        if (Gate::denies("delete", $user)) {
+            return redirect()->route("user.index", $user->id)->withErrors([
+                "Access Dedined" => "Você não possui permissão para acesar esta página"
+            ]);
+        }
+        if (Auth::user()->id == $user->id) {
+            Auth::logout();
+        }
+        $user->delete();
+        return redirect()->route("index");
     }
 }
