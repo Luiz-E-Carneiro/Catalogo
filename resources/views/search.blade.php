@@ -73,7 +73,7 @@
                 <option value="0">Nothing</option>
                 <option value="1" @if (($filter[2] ?? 0) == 1) selected @endif>Lauch Year</option>
                 <option value="2" @if (($filter[2] ?? 0) == 2) selected @endif>Rating</option>
-                <option value="3" @if (($filter[2] ?? 0) == 3) selected @endif>Saves on Wish List</option>
+                <option value="3" @if (($filter[2] ?? 0) == 3) selected @endif>Most Saved</option>
             </select>
         </div>
         <div class="filter_option">
