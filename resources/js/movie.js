@@ -3,14 +3,16 @@ let movie_trailer = document.getElementById("movie_trailer")
 let watch = document.getElementById("watch")
 let settings_button = document.getElementById("settings")
 let settings_window = document.getElementById("settings_window")
-let settings_button_data = settings_button.getBoundingClientRect()
-settings_window.style.top = settings_button_data.top - 87 + "px"
-settings_window.style.left = settings_button_data.left - 175 + settings_button_data.width + "px"
+if (settings_button) {
+    let settings_button_data = settings_button.getBoundingClientRect()
+    settings_window.style.top = settings_button_data.top - 87 + "px"
+    settings_window.style.left = settings_button_data.left - 175 + settings_button_data.width + "px"
+    document.addEventListener("click", function(event) {
+        dropdown_closer(event)
+    })
+    settings_button.addEventListener("click", function() {settings()})
+}
 document.addEventListener("scroll", function() {scrolling()})
-document.addEventListener("click", function(event) {
-    dropdown_closer(event)
-})
-settings_button.addEventListener("click", function() {settings()})
 
 function scrolling() {
     if (window.scrollY > 50) {
@@ -39,7 +41,7 @@ function dropdown_closer(event) {
     if (!profile_dropdown.contains(event.target) && !profile_button.contains(event.target) && !profile_dropdown.classList.contains("closed")) {
         dropdown()
     }
-    if (!settings_window.contains(event.target) && !settings_button.contains(event.target) && settings_window.classList.contains("settings_opened")) {
+    if (settings_button && !settings_window.contains(event.target) && !settings_button.contains(event.target) && settings_window.classList.contains("settings_opened")) {
         settings()
     }
 }
