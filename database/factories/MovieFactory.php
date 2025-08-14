@@ -2,19 +2,24 @@
 
 namespace Database\Factories;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Facades\File;
 use App\Models\Category;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\File;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
-class MovieFactory extends Factory
-{
-    public function definition(): array
-    {
-        $coversDir = public_path('storage/covers');
-        $bannersDir = public_path('storage/banners');
+class MovieFactory extends Factory {
 
-        $covers = collect(File::files($coversDir))->map(fn($file) => 'covers/' . $file->getFilename());
-        $banners = collect(File::files($bannersDir))->map(fn($file) => 'banners/' . $file->getFilename());
+    public function file_randomizer($files) {
+        $random_file = $files->random();
+        $file = new UploadedFile (
+            $random_file->getPathname(),
+            $random_file->getFilename(),
+        );
+        return $file->store('movies', 'public');
+    }
+    public function definition(): array {
+        $covers = collect(File::files(public_path('storage/covers')));
+        $banners = collect(File::files(public_path('storage/banners')));
         $trailer_links = collect([
             "https://youtu.be/TcMBFSGVi1c?si=F-76Gs3zqWCgA48r",
             "https://youtu.be/W_H7_tDHFE8?si=yg-ykhDthwOpM_n9",
@@ -37,8 +42,8 @@ class MovieFactory extends Factory
             'year' => fake()->numberBetween(1980, 2025),
             'rating' => fake()->randomFloat(1, 0, 10), // 0.0 a 10.0
             'link' => $trailer_links->random(),
-            'cover' => $covers->isNotEmpty() ? $covers->random() : null,
-            'banner' => $banners->isNotEmpty() ? $banners->random() : null,
+            'cover' => $this->file_randomizer($covers),
+            'banner' => $this->file_randomizer($banners),
             'category_id' => Category::inRandomOrder()->first()->id ?? 1,
         ];
     }

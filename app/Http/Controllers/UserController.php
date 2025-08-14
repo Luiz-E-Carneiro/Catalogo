@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rules\Password;
 
 class UserController extends Controller
@@ -129,16 +130,20 @@ class UserController extends Controller
         if ($request->hasFile('profile')) {
             $image = $request->file('profile');
             $imagePath = $image->store('users', 'public');
-
             $data['profile'] = $imagePath;
+            if (Storage::disk('public')->exists($user->profile) && $user->profile != "users/default_profile.svg") {
+                Storage::disk('public')->delete($user->profile);
+            }
         } else {
             $data['profile'] = $user->profile;
         }
         if ($request->hasFile('banner')) {
             $image = $request->file('banner');
             $imagePath = $image->store('users', 'public');
-
             $data['banner'] = $imagePath;
+            if (Storage::disk('public')->exists($user->banner) && $user->banner != "users/default_banner.jpg") {
+                Storage::disk('public')->delete($user->banner);
+            }
         } else {
             $data['banner'] = $user->banner;
         }

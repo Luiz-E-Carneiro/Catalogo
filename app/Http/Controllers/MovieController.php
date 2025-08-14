@@ -7,6 +7,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StoreMovieRequest;
 use App\Http\Requests\UpdateMovieRequest;
 
@@ -145,6 +146,9 @@ class MovieController extends Controller
             $image = $request->file('cover');
             $imagePath = $image->store('movies', 'public');
             $data['cover'] = $imagePath;
+            if (Storage::disk('public')->exists($movie->cover)) {
+                Storage::disk('public')->delete($movie->cover);
+            }
         } else {
             $data['cover'] = $movie->cover;
         }
@@ -152,6 +156,9 @@ class MovieController extends Controller
             $image = $request->file('banner');
             $imagePath = $image->store('movies', 'public');
             $data['banner'] = $imagePath;
+            if (Storage::disk('public')->exists($movie->banner)) {
+                Storage::disk('public')->delete($movie->banner);
+            }
         } else {
             $data['banner'] = $movie->banner;
         }
